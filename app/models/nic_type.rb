@@ -1,0 +1,2 @@
+class NicType < ApplicationRecord
+end

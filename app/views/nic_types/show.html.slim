@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @nic_type.name
+p
+  strong Display name:
+  = @nic_type.display_name
+p
+  strong Allow laa:
+  = @nic_type.allow_laa
+
+=> link_to 'Edit', edit_nic_type_path(@nic_type)
+'|
+=< link_to 'Back', nic_types_path

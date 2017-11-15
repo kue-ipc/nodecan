@@ -1,0 +1,25 @@
+h1 Listing nic_types
+
+table
+  thead
+    tr
+      th Name
+      th Display name
+      th Allow laa
+      th
+      th
+      th
+
+  tbody
+    - @nic_types.each do |nic_type|
+      tr
+        td = nic_type.name
+        td = nic_type.display_name
+        td = nic_type.allow_laa
+        td = link_to 'Show', nic_type
+        td = link_to 'Edit', edit_nic_type_path(nic_type)
+        td = link_to 'Destroy', nic_type, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Nic type', new_nic_type_path
