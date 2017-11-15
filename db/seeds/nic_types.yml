@@ -1,0 +1,11 @@
+# nic_types
+---
+- name: wired
+  display_name: 有線
+  allow_laa: false
+- name: wireless
+  display_name: 無線
+  allow_laa: false
+- name: virtual
+  display_name: 仮想
+  allow_laa: false
