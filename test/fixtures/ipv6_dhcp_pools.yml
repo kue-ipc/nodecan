@@ -2,10 +2,10 @@
 
 one:
   ipv6_network: one
-  first: 1
-  last: 1
+  first: 
+  last: 
 
 two:
   ipv6_network: two
-  first: 1
-  last: 1
+  first: 
+  last: 
