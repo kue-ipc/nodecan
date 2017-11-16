@@ -1,0 +1,24 @@
+= form_for @dhcp_type do |f|
+  - if @dhcp_type.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@dhcp_type.errors.count, "error")} prohibited this dhcp_type from being saved:"
+      ul
+        - @dhcp_type.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :display_name
+    = f.text_field :display_name
+  .field
+    = f.label :managed
+    = f.check_box :managed
+  .field
+    = f.label :reservable
+    = f.check_box :reservable
+  .field
+    = f.label :leasable
+    = f.check_box :leasable
+  .actions = f.submit

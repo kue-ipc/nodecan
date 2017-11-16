@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @dhcp_type.name
+p
+  strong Display name:
+  = @dhcp_type.display_name
+p
+  strong Managed:
+  = @dhcp_type.managed
+p
+  strong Reservable:
+  = @dhcp_type.reservable
+p
+  strong Leasable:
+  = @dhcp_type.leasable
+
+=> link_to 'Edit', edit_dhcp_type_path(@dhcp_type)
+'|
+=< link_to 'Back', dhcp_types_path

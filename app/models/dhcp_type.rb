@@ -1,0 +1,2 @@
+class DhcpType < ApplicationRecord
+end
