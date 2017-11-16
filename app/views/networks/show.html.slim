@@ -1,0 +1,27 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @network.name
+p
+  strong Display name:
+  = @network.display_name
+p
+  strong Vlan:
+  = @network.vlan
+p
+  strong Ipv4 network:
+  = @network.ipv4_network
+p
+  strong Ipv6 network:
+  = @network.ipv6_network
+p
+  strong Use auth:
+  = @network.use_auth
+p
+  strong Note:
+  = @network.note
+
+=> link_to 'Edit', edit_network_path(@network)
+'|
+=< link_to 'Back', networks_path

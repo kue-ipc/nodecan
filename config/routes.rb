@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :networks
   resources :dhcp_types
   resources :nic_types
   devise_for :users

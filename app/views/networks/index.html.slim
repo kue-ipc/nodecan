@@ -1,0 +1,33 @@
+h1 Listing networks
+
+table
+  thead
+    tr
+      th Name
+      th Display name
+      th Vlan
+      th Ipv4 network
+      th Ipv6 network
+      th Use auth
+      th Note
+      th
+      th
+      th
+
+  tbody
+    - @networks.each do |network|
+      tr
+        td = network.name
+        td = network.display_name
+        td = network.vlan
+        td = network.ipv4_network
+        td = network.ipv6_network
+        td = network.use_auth
+        td = network.note
+        td = link_to 'Show', network
+        td = link_to 'Edit', edit_network_path(network)
+        td = link_to 'Destroy', network, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Network', new_network_path

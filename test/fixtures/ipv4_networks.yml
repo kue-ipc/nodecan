@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  address: 1
+  netmask: 1
+  gateway: 1
+  use_dhcp: false
+  dhcp_type: one
+
+two:
+  address: 1
+  netmask: 1
+  gateway: 1
+  use_dhcp: false
+  dhcp_type: two
