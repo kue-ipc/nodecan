@@ -4,8 +4,8 @@ class CreateNetworks < ActiveRecord::Migration[5.1]
       t.string :name, null: false
       t.string :display_name
       t.integer :vlan, limit: 2
-      t.references :ipv4_network, foreign_key: true
-      t.references :ipv6_network, foreign_key: true
+      t.boolean :use_ipv4, null: false, default: false
+      t.boolean :use_ipv6, null: false, default: false
       t.boolean :use_auth, null: false, default: false
       t.text :note
 

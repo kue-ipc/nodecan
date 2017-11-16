@@ -69,6 +69,6 @@ class NetworksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def network_params
-      params.require(:network).permit(:name, :display_name, :vlan, :ipv4_network_id, :ipv6_network_id, :use_auth, :note)
+      params.require(:network).permit(:name, :display_name, :vlan, :use_ipv4, :use_ipv6, :use_auth, :note)
     end
 end

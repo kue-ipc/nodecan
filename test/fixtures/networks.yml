@@ -4,8 +4,8 @@ one:
   name: MyString
   display_name: MyString
   vlan: 1
-  ipv4_network: one
-  ipv6_network: one
+  use_ipv4: false
+  use_ipv6: false
   use_auth: false
   note: MyText
 
@@ -13,7 +13,7 @@ two:
   name: MyString
   display_name: MyString
   vlan: 1
-  ipv4_network: two
-  ipv6_network: two
+  use_ipv4: false
+  use_ipv6: false
   use_auth: false
   note: MyText

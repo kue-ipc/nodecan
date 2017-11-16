@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  network: one
   address: 
   netmask: 1
   gateway: 
@@ -8,6 +9,7 @@ one:
   dhcp_type: one
 
 two:
+  network: two
   address: 
   netmask: 1
   gateway: 
