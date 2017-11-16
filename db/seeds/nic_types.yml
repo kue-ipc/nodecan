@@ -8,4 +8,4 @@
   allow_laa: false
 - name: virtual
   display_name: 仮想
-  allow_laa: false
+  allow_laa: true
