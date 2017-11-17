@@ -2,10 +2,8 @@
 
 one:
   name: MyString
-  display_name: MyString
   allow_laa: false
 
 two:
   name: MyString
-  display_name: MyString
   allow_laa: false

@@ -17,7 +17,7 @@ class NicTypesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create nic_type" do
     assert_difference('NicType.count') do
-      post nic_types_url, params: { nic_type: { allow_laa: @nic_type.allow_laa, display_name: @nic_type.display_name, name: @nic_type.name } }
+      post nic_types_url, params: { nic_type: { allow_laa: @nic_type.allow_laa, name: @nic_type.name } }
     end
 
     assert_redirected_to nic_type_url(NicType.last)
@@ -34,7 +34,7 @@ class NicTypesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update nic_type" do
-    patch nic_type_url(@nic_type), params: { nic_type: { allow_laa: @nic_type.allow_laa, display_name: @nic_type.display_name, name: @nic_type.name } }
+    patch nic_type_url(@nic_type), params: { nic_type: { allow_laa: @nic_type.allow_laa, name: @nic_type.name } }
     assert_redirected_to nic_type_url(@nic_type)
   end
 

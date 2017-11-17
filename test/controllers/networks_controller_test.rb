@@ -17,7 +17,7 @@ class NetworksControllerTest < ActionDispatch::IntegrationTest
 
   test "should create network" do
     assert_difference('Network.count') do
-      post networks_url, params: { network: { display_name: @network.display_name, name: @network.name, note: @network.note, use_auth: @network.use_auth, use_ipv4: @network.use_ipv4, use_ipv6: @network.use_ipv6, vlan: @network.vlan } }
+      post networks_url, params: { network: { name: @network.name, note: @network.note, use_auth: @network.use_auth, use_ipv4: @network.use_ipv4, use_ipv6: @network.use_ipv6, vlan: @network.vlan } }
     end
 
     assert_redirected_to network_url(Network.last)
@@ -34,7 +34,7 @@ class NetworksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update network" do
-    patch network_url(@network), params: { network: { display_name: @network.display_name, name: @network.name, note: @network.note, use_auth: @network.use_auth, use_ipv4: @network.use_ipv4, use_ipv6: @network.use_ipv6, vlan: @network.vlan } }
+    patch network_url(@network), params: { network: { name: @network.name, note: @network.note, use_auth: @network.use_auth, use_ipv4: @network.use_ipv4, use_ipv6: @network.use_ipv6, vlan: @network.vlan } }
     assert_redirected_to network_url(@network)
   end
 

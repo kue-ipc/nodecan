@@ -2,7 +2,6 @@ class CreateDhcpTypes < ActiveRecord::Migration[5.1]
   def change
     create_table :dhcp_types do |t|
       t.string :name, null: false
-      t.string :display_name
       t.boolean :managed, null: false, default: false
       t.boolean :reservable, null: false, default: true
       t.boolean :leasable, null: false, default: true

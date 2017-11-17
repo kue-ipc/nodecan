@@ -2,7 +2,6 @@
 
 one:
   name: MyString
-  display_name: MyString
   vlan: 1
   use_ipv4: false
   use_ipv6: false
@@ -11,7 +10,6 @@ one:
 
 two:
   name: MyString
-  display_name: MyString
   vlan: 1
   use_ipv4: false
   use_ipv6: false

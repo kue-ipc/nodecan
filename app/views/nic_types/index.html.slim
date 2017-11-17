@@ -14,7 +14,6 @@ table
     - @nic_types.each do |nic_type|
       tr
         td = nic_type.name
-        td = nic_type.display_name
         td = nic_type.allow_laa
         td = link_to 'Show', nic_type
         td = link_to 'Edit', edit_nic_type_path(nic_type)

@@ -69,6 +69,6 @@ class NicTypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nic_type_params
-      params.require(:nic_type).permit(:name, :display_name, :allow_laa)
+      params.require(:nic_type).permit(:name, :allow_laa)
     end
 end

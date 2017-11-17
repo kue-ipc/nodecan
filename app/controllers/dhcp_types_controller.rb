@@ -69,6 +69,6 @@ class DhcpTypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dhcp_type_params
-      params.require(:dhcp_type).permit(:name, :display_name, :managed, :reservable, :leasable)
+      params.require(:dhcp_type).permit(:name, :managed, :reservable, :leasable)
     end
 end

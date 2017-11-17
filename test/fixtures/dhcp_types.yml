@@ -2,14 +2,12 @@
 
 one:
   name: MyString
-  display_name: MyString
   managed: false
   reservable: false
   leasable: false
 
 two:
   name: MyString
-  display_name: MyString
   managed: false
   reservable: false
   leasable: false

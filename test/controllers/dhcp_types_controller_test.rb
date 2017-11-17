@@ -17,7 +17,7 @@ class DhcpTypesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create dhcp_type" do
     assert_difference('DhcpType.count') do
-      post dhcp_types_url, params: { dhcp_type: { display_name: @dhcp_type.display_name, leasable: @dhcp_type.leasable, managed: @dhcp_type.managed, name: @dhcp_type.name, reservable: @dhcp_type.reservable } }
+      post dhcp_types_url, params: { dhcp_type: { leasable: @dhcp_type.leasable, managed: @dhcp_type.managed, name: @dhcp_type.name, reservable: @dhcp_type.reservable } }
     end
 
     assert_redirected_to dhcp_type_url(DhcpType.last)
@@ -34,7 +34,7 @@ class DhcpTypesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update dhcp_type" do
-    patch dhcp_type_url(@dhcp_type), params: { dhcp_type: { display_name: @dhcp_type.display_name, leasable: @dhcp_type.leasable, managed: @dhcp_type.managed, name: @dhcp_type.name, reservable: @dhcp_type.reservable } }
+    patch dhcp_type_url(@dhcp_type), params: { dhcp_type: { leasable: @dhcp_type.leasable, managed: @dhcp_type.managed, name: @dhcp_type.name, reservable: @dhcp_type.reservable } }
     assert_redirected_to dhcp_type_url(@dhcp_type)
   end
 
