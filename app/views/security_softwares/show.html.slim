@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @security_software.name
+p
+  strong Has expiration:
+  = @security_software.has_expiration
+
+=> link_to 'Edit', edit_security_software_path(@security_software)
+'|
+=< link_to 'Back', security_softwares_path

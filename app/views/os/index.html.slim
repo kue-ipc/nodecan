@@ -1,0 +1,25 @@
+h1 Listing os
+
+table
+  thead
+    tr
+      th Name
+      th Os type
+      th End of life
+      th
+      th
+      th
+
+  tbody
+    - @os.each do |o|
+      tr
+        td = o.name
+        td = o.os_type
+        td = o.end_of_life
+        td = link_to 'Show', o
+        td = link_to 'Edit', edit_o_path(o)
+        td = link_to 'Destroy', o, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Os', new_o_path

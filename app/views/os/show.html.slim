@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @o.name
+p
+  strong Os type:
+  = @o.os_type
+p
+  strong End of life:
+  = @o.end_of_life
+
+=> link_to 'Edit', edit_o_path(@o)
+'|
+=< link_to 'Back', os_index_path

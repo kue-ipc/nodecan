@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  node: one
+  os: one
+  security_software: one
+  hostname: MyString
+  duid: MyString
+
+two:
+  node: two
+  os: two
+  security_software: two
+  hostname: MyString
+  duid: MyString

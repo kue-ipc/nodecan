@@ -1,0 +1,2 @@
+class IpSetting < ApplicationRecord
+end

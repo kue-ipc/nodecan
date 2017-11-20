@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @os_type.name
+p
+  strong Require security software:
+  = @os_type.require_security_software
+
+=> link_to 'Edit', edit_os_type_path(@os_type)
+'|
+=< link_to 'Back', os_types_path

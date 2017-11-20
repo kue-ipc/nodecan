@@ -1,0 +1,21 @@
+h1 Listing node_models
+
+table
+  thead
+    tr
+      th Name
+      th
+      th
+      th
+
+  tbody
+    - @node_models.each do |node_model|
+      tr
+        td = node_model.name
+        td = link_to 'Show', node_model
+        td = link_to 'Edit', edit_node_model_path(node_model)
+        td = link_to 'Destroy', node_model, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Node model', new_node_model_path

@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  node: one
+  nic_type: one
+  network: one
+  mac_address: 1
+  ipv4_setting: one
+  ipv6_setting: one
+  ipv4: 1
+  ipv6: 
+  connected: 2017-11-17 16:03:38
+
+two:
+  name: MyString
+  node: two
+  nic_type: two
+  network: two
+  mac_address: 1
+  ipv4_setting: two
+  ipv6_setting: two
+  ipv4: 1
+  ipv6: 
+  connected: 2017-11-17 16:03:38

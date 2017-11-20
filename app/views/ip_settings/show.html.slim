@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @ip_setting.name
+p
+  strong Require address:
+  = @ip_setting.require_address
+p
+  strong Require dhcp:
+  = @ip_setting.require_dhcp
+p
+  strong Register reservation:
+  = @ip_setting.register_reservation
+
+=> link_to 'Edit', edit_ip_setting_path(@ip_setting)
+'|
+=< link_to 'Back', ip_settings_path

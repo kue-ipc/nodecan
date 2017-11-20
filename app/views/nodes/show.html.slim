@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @node.name
+p
+  strong User:
+  = @node.user
+p
+  strong Confirmed:
+  = @node.confirmed
+p
+  strong Note:
+  = @node.note
+
+=> link_to 'Edit', edit_node_path(@node)
+'|
+=< link_to 'Back', nodes_path

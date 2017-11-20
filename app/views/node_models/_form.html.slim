@@ -1,0 +1,12 @@
+= form_for @node_model do |f|
+  - if @node_model.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@node_model.errors.count, "error")} prohibited this node_model from being saved:"
+      ul
+        - @node_model.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .actions = f.submit

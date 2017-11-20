@@ -1,0 +1,23 @@
+h1 Listing security_softwares
+
+table
+  thead
+    tr
+      th Name
+      th Has expiration
+      th
+      th
+      th
+
+  tbody
+    - @security_softwares.each do |security_software|
+      tr
+        td = security_software.name
+        td = security_software.has_expiration
+        td = link_to 'Show', security_software
+        td = link_to 'Edit', edit_security_software_path(security_software)
+        td = link_to 'Destroy', security_software, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Security software', new_security_software_path

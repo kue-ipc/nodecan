@@ -1,0 +1,27 @@
+h1 Listing nodes
+
+table
+  thead
+    tr
+      th Name
+      th User
+      th Confirmed
+      th Note
+      th
+      th
+      th
+
+  tbody
+    - @nodes.each do |node|
+      tr
+        td = node.name
+        td = node.user
+        td = node.confirmed
+        td = node.note
+        td = link_to 'Show', node
+        td = link_to 'Edit', edit_node_path(node)
+        td = link_to 'Destroy', node, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Node', new_node_path

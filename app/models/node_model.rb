@@ -1,0 +1,2 @@
+class NodeModel < ApplicationRecord
+end

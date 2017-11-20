@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  node: one
+  node_model: one
+  maker: MyString
+  product_name: MyString
+
+two:
+  node: two
+  node_model: two
+  maker: MyString
+  product_name: MyString
