@@ -10,11 +10,27 @@
 
 require 'yaml'
 
-def read_seeds_yaml(model)
+def read_seeds_yaml_with_name(model)
   yaml_file = "#{Rails.root}/db/seeds/#{model.table_name}.yml"
   list = YAML.load_file(yaml_file)
-  p list
-  model.create(list)
+  list.each do |data|
+    data = data.map do |key, val|
+      if key.end_with?('_by_name')
+        key = key.sub(/_by_name$/, '')
+        val = key.classify.constantize.find_by_name(val)
+      end
+      [key, val]
+    end.to_h
+    entry = model.find_by_name(data['name'])
+    if entry
+      entry.update(data)
+      entry.save
+    else
+      model.create(data)
+    end
+  end
 end
 
-read_seeds_yaml(NicType)
+read_seeds_yaml_with_name(OsType)
+read_seeds_yaml_with_name(Os)
+# read_seeds_yaml(NodeModel)

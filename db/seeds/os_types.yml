@@ -1,0 +1,16 @@
+# os_types
+---
+- name: Windows
+  require_security_software: true
+- name: Mac
+  require_security_software: true
+- name: Linux
+  require_security_software: false
+- name: UNIX
+  require_security_software: false
+- name: iOS
+  require_security_software: false
+- name: Android
+  require_security_software: false
+- name: 組込OS/専用OS/その他
+  require_security_software: false

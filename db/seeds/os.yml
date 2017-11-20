@@ -1,0 +1,11 @@
+# os
+---
+- name: Windows 10
+  os_type_by_name: Windows
+  end_of_life: null
+- name: Windows 8/8.1
+  os_type_by_name: Windows
+  end_of_life: 2023-01-10
+- name: CentOS 7
+  os_type_by_name: Linux
+  end_of_life: 2024-06-30

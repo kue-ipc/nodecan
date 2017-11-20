@@ -1,8 +1,0 @@
-# nic_types
----
-- name: 有線
-  allow_laa: false
-- name: 無線
-  allow_laa: false
-- name: 仮想
-  allow_laa: true
