@@ -1,2 +1,0 @@
-class IpSetting < ApplicationRecord
-end

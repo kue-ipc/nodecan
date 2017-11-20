@@ -1,4 +1,4 @@
-class Ipv4Network < ApplicationRecord
+class Ipv4Network < IpNetwork
   belongs_to :network
-  belongs_to :dhcp_type
+  enum type: TYPES
 end

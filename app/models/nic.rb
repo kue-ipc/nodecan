@@ -1,7 +1,9 @@
 class Nic < ApplicationRecord
+  IP_SETTINGS = { disabled: 0, auto: 1, reserved: 2, static: 3 }.freeze
   belongs_to :node
-  belongs_to :nic_type
   belongs_to :network
-  belongs_to :ipv4_setting, class_name: 'IpSetting'
-  belongs_to :ipv6_setting
+
+  enum type: { wired: 0, wireless: 1, virtual: 2 }
+  enum ipv4_setting: IP_SETTINGS, _prefix: :ipv4
+  enum ipv6_setting: IP_SETTINGS, _prefix: :ipv6
 end
