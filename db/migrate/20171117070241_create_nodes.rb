@@ -6,6 +6,9 @@ class CreateNodes < ActiveRecord::Migration[5.1]
       t.timestamp :confirmed
       t.text :note
 
+      t.index :name
+      t.index :user
+
       t.timestamps
     end
   end

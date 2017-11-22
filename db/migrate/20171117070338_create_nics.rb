@@ -12,6 +12,8 @@ class CreateNics < ActiveRecord::Migration[5.1]
       t.binary :ipv6
       t.timestamp :connected
 
+      t.index :mac_address, unique: true
+
       t.timestamps
     end
   end

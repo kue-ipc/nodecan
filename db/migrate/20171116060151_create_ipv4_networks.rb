@@ -7,6 +7,8 @@ class CreateIpv4Networks < ActiveRecord::Migration[5.1]
       t.integer :netmask, null: false, limit: 1
       t.integer :gateway, limit: 5
 
+      t.index :address, unique: true
+
       t.timestamps
     end
   end

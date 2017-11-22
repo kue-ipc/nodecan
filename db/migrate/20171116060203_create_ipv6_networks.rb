@@ -7,6 +7,8 @@ class CreateIpv6Networks < ActiveRecord::Migration[5.1]
       t.integer :netmask, null: false, limit: 2
       t.binary :gateway, limit: 16
 
+      t.index :address, unique: true
+
       t.timestamps
     end
   end
