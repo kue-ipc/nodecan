@@ -1,62 +1,145 @@
 # os
 ---
-- name: Windows 10
-  os_type_by_name: Windows
-  end_of_life: null
-- name: Windows 8.1
-  os_type_by_name: Windows
-  end_of_life: 2023-01-10
-- name: Windows 7
-  os_type_by_name: Windows
-  end_of_life:  2020-01-14
-- name: Windows 8
-  os_type_by_name: Windows
-  end_of_life: 2016-01-12
-- name: Windows Vista
-  os_type_by_name: Windows
-  end_of_life: 2017-04-11
-- name: Windows XP以下
-  os_type_by_name: Windows
-  end_of_life: 2014-04-08
-- name: その他のWindows
-  os_type_by_name: Windows
-  end_of_life: null
-- name: Windows Server 2016以上
-  os_type_by_name: Windows Server
-  end_of_life: 2027-01-11
-- name: Windows Server 2012/2012 R2
-  os_type_by_name: Windows Server
-  end_of_life: 2023-01-10
-- name: Windows Server 2008/2008 R2
-  os_type_by_name: Windows Server
-  end_of_life: 2020-01-14
-- name: Windows Server 2003/2003 R2以下
-  os_type_by_name: Windows Server
-  end_of_life: 2015-07-14
-- name: RedHat Enterprise Linux 7/CentOS 7
-  os_type_by_name: Linux
-  end_of_life: 2024-06-30
-- name: RedHat Enterprise Linux 6/CentOS 6
-  os_type_by_name: Linux
-  end_of_life: 2020-11-30
-- name: RedHat Enterprise Linux 5/CentOS 5
-  os_type_by_name: Linux
-  end_of_life: 2017-03-31
-- name: Fedora
-  os_type_by_name: Linux
-  end_of_life: null
-- name: Debian 9
-  os_type_by_name: Linux
-  end_of_life:
-- name: Debian 9
-  os_type_by_name: Linux
-  end_of_life: null
-- name: その他のLinux
-  os_type_by_name: Linux
-  end_of_life: null
-- name: 専用OS
-  os_type_by_name: 専用OS
-  end_of_life: null
-- name: その他
-  os_type_by_name: その他
-  end_of_life: null
+families:
+  - name: Windows
+    products:
+      - name: Windows クライアント
+        require_security_software: true
+        os:
+          - name: Windows 10
+            version: '10'
+            release: null
+            end_of_life: null
+          - version: '8.1'
+            end_of_life: 2023-01-10
+          - version: '7'
+            end_of_life:  2020-01-14
+          - version: '8'
+            end_of_life: 2016-01-12
+          - version: Vista
+            end_of_life: 2017-04-11
+          - version: XP以下
+            end_of_life: 2014-04-08
+          - version: その他
+            end_of_life: null
+      - name: Windows Server
+        os:
+          - version: '2016'
+            end_of_life: 2027-01-11
+          - version: 2012/2012 R2
+            end_of_life: 2023-01-10
+          - version: 2008/2008 R2
+            end_of_life: 2020-01-14
+          - version: 2003/2003 R2以下
+            end_of_life: 2015-07-14
+      - name: その他のWindows
+        os:
+          - name: その他のWindows
+          - version: null
+            end_of_life: null
+  - name: Linux
+    products:
+      - name: RedHat Enterprise Linux
+        os:
+          - version: '7'
+            end_of_life: 2024-06-30
+          - version: '6'
+            end_of_life: 2020-11-30
+          - version: '5'
+            end_of_life: 2017-03-31
+          - version: '4以下'
+            end_of_life: 2012-02-29
+  #   - name: Fedora
+  #     - version: '28以上'
+  #       end_of_life: null
+  #     - version: '27'
+  #       end_of_life: null
+  #     - version: '26'
+  #       end_of_life: null
+  #     - version: '25'
+  #       end_of_life: null
+  #     - version: '24以下'
+  #       end_of_life: 2017-08-08
+  #   - name: CentOS
+  #     - version: '7'
+  #       end_of_life: 2024-06-30
+  #     - version: '6'
+  #       end_of_life: 2020-11-30
+  #     - version: '5'
+  #       end_of_life: 2017-03-31
+  #     - version: '4以下'
+  #       end_of_life: 2012-02-29
+  #   - name: Debian
+  #     - version: '10以上'
+  #       end_of_life: null
+  #     - version: '9'
+  #       end_of_life: 2022-06-17
+  #     - version: '8'
+  #       end_of_life: 2020-06-06
+  #     - version: '7'
+  #       end_of_life: 2018-05-31
+  #     - version: '6以下'
+  #       end_of_life: 2016-02-29
+  #   - name: Ubuntu
+  #     - version: '18.04 LTS'
+  #       end_of_life: 2023-04-26
+  #     - version: '17.10'
+  #       end_of_life: 2018-07-19
+  #     - version: '17.04'
+  #       end_of_life: 2018-01-13
+  #     - version: '16.10'
+  #       end_of_life: 2017-07-20
+  #     - version: '16.04 LTS'
+  #       end_of_life: 2021-04
+  #     - version: '14.10 ～ 15.10'
+  #       end_of_life: 2016-07-28
+  #     - version: '14.04 LTS'
+  #       end_of_life: 2019-04-17
+  #     - version: '13.00'
+  #       end_of_life: 2016-07-28
+  #     - version: '12.04 LTS'
+  #       end_of_life: 2017-04-28
+  #   - name: その他のLinux
+  #     - version: null
+  #       end_of_life: null
+  # - type: UNIX (Mac含む)
+  #   - name: macOS(Mac OS)
+  #     - version: 10.13 High Sieera
+  #     - version: 10.12 Sierra
+  #     - version: 10.11 EL Capitan
+  #     - version: 10.10 Yosemite
+  #     - version: 10.9以下
+  #   - name: FreeBSD
+  #   - name: OpenBSD
+  #   - name: Solaris
+  #   - name: その他のUNIX
+  # - type: 専用OS
+  #   - name: FreeNAS
+  #   - name: QNAP
+  #   - name: Data ONTAP
+  #   - name: 専用OS
+  #     - version: null
+  #       end_of_life: null
+  # - name: その他
+  #   - name: その他
+  #     - version: null
+  #       end_of_life: null
+
+# # os_types
+# ---
+# - name: Windows
+#   require_security_software: true
+# - name: Mac
+#   require_security_software: true
+# - name: Linux
+#   require_security_software: false
+# - name: UNIX
+#   require_security_software: false
+# - name: iOS
+#   require_security_software: false
+# - name: Android
+#   require_security_software: false
+# - name: 専用OS
+#   require_security_software: false
+# - name: その他
+#   require_security_software: false

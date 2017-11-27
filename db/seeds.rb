@@ -31,6 +31,34 @@ def read_seeds_yaml_with_name(model)
   end
 end
 
-read_seeds_yaml_with_name(OsType)
-read_seeds_yaml_with_name(Os)
+def read_seeds_yaml_os
+  yaml_file = "#{Rails.root}/db/seeds/os.yml"
+  data = YAML.load_file(yaml_file)
+  data['families'].each do |family_data|
+    family = OsFamily.find_or_create_by(name: family_data['name'])
+    family.save
+    puts "create or update os family: #{family.name}"
+    family_data['products'].each do |product_data|
+      product = OsProduct.find_or_create_by(name: product_data['name'])
+      product.os_family = family
+      product.require_security_software = product_data['require_security_software'] || false
+      product.save
+      puts "create or update os product: #{product.name}"
+      product_data['os'].each do |os_data|
+        os_data['name'] ||= [product.name, os_data['version']].select(&:itself).join(' ')
+        os = Os.find_or_create_by(name: os_data['name'])
+        os.os_product = product
+        os.version = os_data['version'] if os_data['version']
+        os.relesae = os_data['relesae'] if os_data['relesae']
+        os.end_of_life = os_data['end_of_life'] if os_data['end_of_life']
+        os.save
+        puts "create or update os: #{os.name}"
+      end
+    end
+  end
+end
+
+read_seeds_yaml_os
+# read_seeds_yaml_with_name(OsType)
+# read_seeds_yaml_with_name(Os)
 # read_seeds_yaml(NodeModel)
