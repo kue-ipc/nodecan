@@ -5,6 +5,7 @@ table
     tr
       th Name
       th Os family
+      th Require security software
       th
       th
       th
@@ -14,6 +15,7 @@ table
       tr
         td = os_product.name
         td = os_product.os_family
+        td = os_product.require_security_software
         td = link_to 'Show', os_product
         td = link_to 'Edit', edit_os_product_path(os_product)
         td = link_to 'Destroy', os_product, data: { confirm: 'Are you sure?' }, method: :delete
