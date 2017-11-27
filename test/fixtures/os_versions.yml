@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  os_product: one
+  version: MyString
+  release: 2017-11-27
+  end_of_life: 2017-11-27
+
+two:
+  name: MyString
+  os_product: two
+  version: MyString
+  release: 2017-11-27
+  end_of_life: 2017-11-27

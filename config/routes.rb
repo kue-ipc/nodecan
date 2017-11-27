@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
+  resources :os_versions
   resources :os_products
   resources :os_families
   resources :security_softwares
-  resources :os
   resources :node_models
   resources :nodes
   resources :networks

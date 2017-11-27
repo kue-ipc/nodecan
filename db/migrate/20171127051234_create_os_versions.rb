@@ -1,6 +1,6 @@
-class CreateOs < ActiveRecord::Migration[5.1]
+class CreateOsVersions < ActiveRecord::Migration[5.1]
   def change
-    create_table :os do |t|
+    create_table :os_versions do |t|
       t.string :name
       t.references :os_product, foreign_key: true
       t.string :version

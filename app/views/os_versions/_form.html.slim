@@ -1,0 +1,24 @@
+= form_for @os_version do |f|
+  - if @os_version.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@os_version.errors.count, "error")} prohibited this os_version from being saved:"
+      ul
+        - @os_version.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :os_product
+    = f.text_field :os_product
+  .field
+    = f.label :version
+    = f.text_field :version
+  .field
+    = f.label :release
+    = f.date_select :release
+  .field
+    = f.label :end_of_life
+    = f.date_select :end_of_life
+  .actions = f.submit

@@ -44,15 +44,15 @@ def read_seeds_yaml_os
       product.require_security_software = product_data['require_security_software'] || false
       product.save
       puts "create or update os product: #{product.name}"
-      product_data['os'].each do |os_data|
-        os_data['name'] ||= [product.name, os_data['version']].select(&:itself).join(' ')
-        os = Os.find_or_create_by(name: os_data['name'])
-        os.os_product = product
-        os.version = os_data['version'] if os_data['version']
-        os.relesae = os_data['relesae'] if os_data['relesae']
-        os.end_of_life = os_data['end_of_life'] if os_data['end_of_life']
-        os.save
-        puts "create or update os: #{os.name}"
+      product_data['versions'].each do |version_data|
+        version_data['name'] ||= [product.name, version_data['version']].select(&:itself).join(' ')
+        version = OsVersion.find_or_create_by(name: version_data['name'])
+        version.os_product = product
+        version.version = version_data['version'] if version_data['version']
+        version.relesae = version_data['relesae'] if version_data['relesae']
+        version.end_of_life = version_data['end_of_life'] if version_data['end_of_life']
+        version.save
+        puts "create or update os version: #{version.name}"
       end
     end
   end

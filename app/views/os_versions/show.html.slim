@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @os_version.name
+p
+  strong Os product:
+  = @os_version.os_product
+p
+  strong Version:
+  = @os_version.version
+p
+  strong Release:
+  = @os_version.release
+p
+  strong End of life:
+  = @os_version.end_of_life
+
+=> link_to 'Edit', edit_os_version_path(@os_version)
+'|
+=< link_to 'Back', os_versions_path

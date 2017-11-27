@@ -1,0 +1,29 @@
+h1 Listing os_versions
+
+table
+  thead
+    tr
+      th Name
+      th Os product
+      th Version
+      th Release
+      th End of life
+      th
+      th
+      th
+
+  tbody
+    - @os_versions.each do |os_version|
+      tr
+        td = os_version.name
+        td = os_version.os_product
+        td = os_version.version
+        td = os_version.release
+        td = os_version.end_of_life
+        td = link_to 'Show', os_version
+        td = link_to 'Edit', edit_os_version_path(os_version)
+        td = link_to 'Destroy', os_version, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Os version', new_os_version_path
