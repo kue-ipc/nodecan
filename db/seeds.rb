@@ -10,6 +10,20 @@
 
 require 'yaml'
 
+def setup_admin
+  return if User.find_by_username('admin')
+  admin = User.create(
+    username: 'admin',
+    display_name: '管理者',
+    email: "admin@#{ENV['HOSTNAME']}",
+    password: 'nodecan_admin',
+    ldap: false,
+    admin: true
+  )
+  admin.save!
+  puts 'create admin'
+end
+
 def read_seeds_yaml_with_name(model)
   yaml_file = "#{Rails.root}/db/seeds/#{model.table_name}.yml"
   list = YAML.load_file(yaml_file)
@@ -24,7 +38,7 @@ def read_seeds_yaml_with_name(model)
     entry = model.find_by_name(data['name'])
     if entry
       entry.update(data)
-      entry.save
+      entry.save!
     else
       model.create(data)
     end
@@ -36,13 +50,13 @@ def read_seeds_yaml_os
   data = YAML.load_file(yaml_file)
   data['families'].each do |family_data|
     family = OsFamily.find_or_create_by(name: family_data['name'])
-    family.save
+    family.save!
     puts "create or update os family: #{family.name}"
     family_data['products'].each do |product_data|
       product = OsProduct.find_or_create_by(name: product_data['name'])
       product.os_family = family
       product.require_security_software = product_data['require_security_software'] || false
-      product.save
+      product.save!
       puts "create or update os product: #{product.name}"
       product_data['versions'].each do |version_data|
         version_data['name'] ||= [product.name, version_data['version']].select(&:itself).join(' ')
@@ -51,13 +65,14 @@ def read_seeds_yaml_os
         version.version = version_data['version'] if version_data['version']
         version.relesae = version_data['relesae'] if version_data['relesae']
         version.end_of_life = version_data['end_of_life'] if version_data['end_of_life']
-        version.save
+        version.save!
         puts "create or update os version: #{version.name}"
       end
     end
   end
 end
 
+setup_admin
 read_seeds_yaml_os
 # read_seeds_yaml_with_name(OsType)
 # read_seeds_yaml_with_name(Os)
