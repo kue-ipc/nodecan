@@ -12,5 +12,7 @@
   require_security_software: false
 - name: Android
   require_security_software: false
-- name: 組込OS/専用OS/その他
+- name: 専用OS
+  require_security_software: false
+- name: その他
   require_security_software: false

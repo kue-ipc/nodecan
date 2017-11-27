@@ -3,9 +3,60 @@
 - name: Windows 10
   os_type_by_name: Windows
   end_of_life: null
-- name: Windows 8/8.1
+- name: Windows 8.1
   os_type_by_name: Windows
   end_of_life: 2023-01-10
-- name: CentOS 7
+- name: Windows 7
+  os_type_by_name: Windows
+  end_of_life:  2020-01-14
+- name: Windows 8
+  os_type_by_name: Windows
+  end_of_life: 2016-01-12
+- name: Windows Vista
+  os_type_by_name: Windows
+  end_of_life: 2017-04-11
+- name: Windows XP以下
+  os_type_by_name: Windows
+  end_of_life: 2014-04-08
+- name: その他のWindows
+  os_type_by_name: Windows
+  end_of_life: null
+- name: Windows Server 2016以上
+  os_type_by_name: Windows Server
+  end_of_life: 2027-01-11
+- name: Windows Server 2012/2012 R2
+  os_type_by_name: Windows Server
+  end_of_life: 2023-01-10
+- name: Windows Server 2008/2008 R2
+  os_type_by_name: Windows Server
+  end_of_life: 2020-01-14
+- name: Windows Server 2003/2003 R2以下
+  os_type_by_name: Windows Server
+  end_of_life: 2015-07-14
+- name: RedHat Enterprise Linux 7/CentOS 7
   os_type_by_name: Linux
   end_of_life: 2024-06-30
+- name: RedHat Enterprise Linux 6/CentOS 6
+  os_type_by_name: Linux
+  end_of_life: 2020-11-30
+- name: RedHat Enterprise Linux 5/CentOS 5
+  os_type_by_name: Linux
+  end_of_life: 2017-03-31
+- name: Fedora
+  os_type_by_name: Linux
+  end_of_life: null
+- name: Debian 9
+  os_type_by_name: Linux
+  end_of_life:
+- name: Debian 9
+  os_type_by_name: Linux
+  end_of_life: null
+- name: その他のLinux
+  os_type_by_name: Linux
+  end_of_life: null
+- name: 専用OS
+  os_type_by_name: 専用OS
+  end_of_life: null
+- name: その他
+  os_type_by_name: その他
+  end_of_life: null
