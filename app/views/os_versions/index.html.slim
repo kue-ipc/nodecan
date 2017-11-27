@@ -3,8 +3,9 @@ h1 Listing os_versions
 table
   thead
     tr
-      th Name
+      th Os Family
       th Os product
+      th Name
       th Version
       th Release
       th End of life
@@ -15,8 +16,9 @@ table
   tbody
     - @os_versions.each do |os_version|
       tr
+        td = os_version.os_product.os_family.name
+        td = os_version.os_product.name
         td = os_version.name
-        td = os_version.os_product
         td = os_version.version
         td = os_version.release
         td = os_version.end_of_life
