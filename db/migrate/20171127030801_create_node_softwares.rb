@@ -7,7 +7,6 @@ class CreateNodeSoftwares < ActiveRecord::Migration[5.1]
       t.string :hostname
       t.string :duid
 
-      t.index :node
       t.index :hostname
 
       t.timestamps

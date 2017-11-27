@@ -6,8 +6,6 @@ class CreateNodeHadrwares < ActiveRecord::Migration[5.1]
       t.string :maker
       t.string :product_name
 
-      t.index :node
-
       t.timestamps
     end
   end
