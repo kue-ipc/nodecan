@@ -4,7 +4,7 @@ table
   thead
     tr
       th Name
-      th Os type
+      th Os Product
       th End of life
       th
       th
@@ -14,7 +14,8 @@ table
     - @os.each do |o|
       tr
         td = o.name
-        td = o.os_type
+        td = o.os_product.os_family.name
+        td = o.os_product.name
         td = o.end_of_life
         td = link_to 'Show', o
         td = link_to 'Edit', edit_o_path(o)
