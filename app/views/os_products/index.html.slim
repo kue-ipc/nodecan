@@ -1,0 +1,23 @@
+h1 Listing os_products
+
+table
+  thead
+    tr
+      th Name
+      th Os family
+      th
+      th
+      th
+
+  tbody
+    - @os_products.each do |os_product|
+      tr
+        td = os_product.name
+        td = os_product.os_family
+        td = link_to 'Show', os_product
+        td = link_to 'Edit', edit_os_product_path(os_product)
+        td = link_to 'Destroy', os_product, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Os product', new_os_product_path

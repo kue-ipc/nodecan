@@ -1,0 +1,2 @@
+class OsFamily < ApplicationRecord
+end

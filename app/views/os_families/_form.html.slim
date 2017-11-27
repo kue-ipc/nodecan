@@ -1,9 +1,9 @@
-= form_for @os_type do |f|
-  - if @os_type.errors.any?
+= form_for @os_family do |f|
+  - if @os_family.errors.any?
     #error_explanation
-      h2 = "#{pluralize(@os_type.errors.count, "error")} prohibited this os_type from being saved:"
+      h2 = "#{pluralize(@os_family.errors.count, "error")} prohibited this os_family from being saved:"
       ul
-        - @os_type.errors.full_messages.each do |message|
+        - @os_family.errors.full_messages.each do |message|
           li = message
 
   .field

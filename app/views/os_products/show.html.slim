@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @os_product.name
+p
+  strong Os family:
+  = @os_product.os_family
+
+=> link_to 'Edit', edit_os_product_path(@os_product)
+'|
+=< link_to 'Back', os_products_path

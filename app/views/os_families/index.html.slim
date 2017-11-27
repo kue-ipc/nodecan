@@ -1,0 +1,23 @@
+h1 Listing os_families
+
+table
+  thead
+    tr
+      th Name
+      th Require security software
+      th
+      th
+      th
+
+  tbody
+    - @os_families.each do |os_family|
+      tr
+        td = os_family.name
+        td = os_family.require_security_software
+        td = link_to 'Show', os_family
+        td = link_to 'Edit', edit_os_family_path(os_family)
+        td = link_to 'Destroy', os_family, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Os family', new_os_family_path

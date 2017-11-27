@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class OsTypeTest < ActiveSupport::TestCase
+class OsFamilyTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

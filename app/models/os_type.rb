@@ -1,2 +1,0 @@
-class OsType < ApplicationRecord
-end
