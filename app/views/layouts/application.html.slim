@@ -1,15 +1,27 @@
 doctype html
 html
-  head
-
-    title
-      | Nodecan
+  head[lang="ja"]
+    meta[charset="utf-8"]
+    meta[name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"]
+    title 端末管理システム
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    p.notice
-      = notice
-    p.alert
-      = alert
-    = yield
+    .container-fluid
+      nav.navbar.navbar-light.bg-light.justify-content-between
+        a.navbar-brand[href="#"]
+          | 端末管理システム
+        div
+          - if user_signed_in?
+            = current_user.display_name
+            = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-secondary my-2 my-sm-0'
+          - else
+            | 未ログイン
+      - if notice
+        .alert.alert-success[role="alert"]
+          = notice
+      - if alert
+        .alert.alert-warning[role="alert"]
+          = alert
+      = yield

@@ -1,6 +1,12 @@
 h1 Home#index
 p Find me in app/views/home/index.html.slim
 
+ul
+  li
+    = link_to '端末登録', new_node_path
+  li
+    = link_to '端末一覧', nodes_path
+
 - if user_signed_in?
   = link_to 'Logout', destroy_user_session_path, method: :delete
 - else
