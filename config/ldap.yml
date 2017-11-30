@@ -34,7 +34,7 @@ development:
   admin_user: cn=admin,dc=example,dc=jp
   admin_password: admin_password
   ssl: false
-  # <<: *AUTHORIZATIONS
+  <<: *AUTHORIZATIONS
 
 test:
   host: localhost
@@ -44,7 +44,7 @@ test:
   admin_user: cn=admin,dc=example,dc=jp
   admin_password: admin_password
   ssl: simple_tls
-  # <<: *AUTHORIZATIONS
+  <<: *AUTHORIZATIONS
 
 production:
   host: localhost
@@ -54,4 +54,4 @@ production:
   admin_user: cn=admin,dc=example,dc=jp
   admin_password: admin_password
   ssl: start_tls
-  # <<: *AUTHORIZATIONS
+  <<: *AUTHORIZATIONS

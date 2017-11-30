@@ -44,7 +44,7 @@ module Devise
         end
 
         unless in_group
-          DeviseLdapAuthenticatable::Logger.send("User #{dn} is not in group: #{group_name}")
+          DeviseLdapAuthenticatable::Logger.send("User #{dn} is not in nis group: #{group_name}")
         end
 
         return in_group

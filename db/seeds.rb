@@ -16,10 +16,9 @@ def setup_admin
     username: 'admin',
     display_name: '管理者',
     email: "admin@#{ENV['HOSTNAME']}",
-    password: 'nodecan_admin',
-    ldap: false,
     admin: true
   )
+  admin.password = 'nodecan_admin'
   admin.save!
   puts 'create admin'
 end
