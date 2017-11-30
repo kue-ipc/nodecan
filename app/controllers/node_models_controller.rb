@@ -1,4 +1,5 @@
 class NodeModelsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_node_model, only: [:show, :edit, :update, :destroy]
 
   # GET /node_models

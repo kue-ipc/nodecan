@@ -1,4 +1,5 @@
 class SecuritySoftwaresController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_security_software, only: [:show, :edit, :update, :destroy]
 
   # GET /security_softwares

@@ -1,4 +1,5 @@
 class OsVersionsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_os_version, only: [:show, :edit, :update, :destroy]
 
   # GET /os_versions
