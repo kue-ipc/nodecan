@@ -9,19 +9,25 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     .container-fluid
-      nav.navbar.navbar-light.bg-light.justify-content-between
-        a.navbar-brand[href="#"]
-          | 端末管理システム
-        div
-          - if user_signed_in?
-            = current_user.display_name
-            = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-secondary my-2 my-sm-0'
-          - else
-            | 未ログイン
-      - if notice
-        .alert.alert-success[role="alert"]
-          = notice
-      - if alert
-        .alert.alert-warning[role="alert"]
-          = alert
-      = yield
+      header.mb-2
+        nav.navbar.navbar-light.bg-light.justify-content-between
+          a.navbar-brand[href="#"]
+            | 端末管理システム
+          div
+            - if user_signed_in?
+              => current_user.display_name
+              = link_to destroy_user_session_path, method: :delete, class: 'btn btn-secondary my-2 my-sm-0' do
+                => octicon 'sign-out', height: 24
+                | ログアウト
+            - else
+              | 未ログイン
+      main
+        - if notice
+          .alert.alert-success[role="alert"]
+            => octicon 'info', height: 24
+            = notice
+        - if alert
+          .alert.alert-warning[role="alert"]
+            => octicon 'alert', height: 24
+            = alert
+        = yield
