@@ -110,6 +110,11 @@ GEM
     nio4r (2.1.0)
     nokogiri (1.8.1-x64-mingw32)
       mini_portile2 (~> 2.3.0)
+    octicons (5.0.5)
+      nokogiri (>= 1.6.3.1)
+    octicons_helper (4.0.7)
+      octicons
+      rails
     orm_adapter (0.5.0)
     pg (0.21.0-x64-mingw32)
     popper_js (1.12.5)
@@ -233,6 +238,7 @@ DEPENDENCIES
   devise_ldap_authenticatable!
   jbuilder (~> 2.5)
   net-ldap
+  octicons_helper
   pg (~> 0.18)
   pry-byebug
   pry-rails
