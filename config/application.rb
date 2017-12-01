@@ -16,5 +16,6 @@ module Nodecan
     # -- all .rb files in that directory are automatically loaded.
     config.sass.preferred_syntax = :sass
     config.web_console.whitelisted_ips = '10.0.0.0/8'
+    config.i18n.default_locale = 'ja'
   end
 end
