@@ -14,4 +14,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
     devise_parameter_sanitizer.permit :sign_in, keys: added_attrs
   end
+
+  def require_admin
+    return if current_user&.admin?
+    flash[:alert] = '管理者以外はアクセスできません。'
+    redirect_to root_path
+  end
 end

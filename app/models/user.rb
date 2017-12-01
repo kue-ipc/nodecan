@@ -20,4 +20,8 @@ class User < ApplicationRecord
     names = Devise::LDAP::Adapter.get_ldap_param(username, 'cn')
     self.display_name = names[0] if names && !names.empty?
   end
+
+  def admin?
+    admin
+  end
 end
