@@ -1,31 +1,33 @@
-h1 Listing os_versions
+h1 = t(:listing_models, name: OsVersion.model_name.human)
 
-table
+table.table
   thead
     tr
-      th Os Family
-      th Os product
-      th Name
-      th Version
-      th Release
-      th End of life
-      th
-      th
-      th
+      th[scope="col"] #
+      th[scope="col"] = OsVersion.human_attribute_name(:os_family)
+      th[scope="col"] = OsVersion.human_attribute_name(:os_product)
+      th[scope="col"] = OsVersion.human_attribute_name(:version)
+      th[scope="col"] = OsVersion.human_attribute_name(:name)
+      th[scope="col"] = OsVersion.human_attribute_name(:release)
+      th[scope="col"] = OsVersion.human_attribute_name(:end_of_life)
+      th[scope="col"]
+      th[scope="col"]
+      th[scope="col"]
 
   tbody
     - @os_versions.each do |os_version|
       tr
+        td[scope="row"] = os_version.id
         td = os_version.os_product.os_family.name
         td = os_version.os_product.name
-        td = os_version.name
         td = os_version.version
+        td = os_version.name
         td = os_version.release
         td = os_version.end_of_life
-        td = link_to 'Show', os_version
-        td = link_to 'Edit', edit_os_version_path(os_version)
-        td = link_to 'Destroy', os_version, data: { confirm: 'Are you sure?' }, method: :delete
+        td = link_to t('action.show'), os_version
+        td = link_to t('action.edit'), edit_os_version_path(os_version)
+        td = link_to t('action.destroy'), os_version, data: { confirm: t('action.confirm_destroy') }, method: :delete
 
 br
 
-= link_to 'New Os version', new_os_version_path
+= link_to t('action.new', name: OsVersion.model_name.human), new_os_version_path

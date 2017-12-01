@@ -1,0 +1,9 @@
+ja:
+  listing_models: "%{name}一覧"
+  action:
+    edit: "編集"
+    show: "表示"
+    destroy: "削除"
+    new: "%{name}を新規作成"
+    confirm: "本当によろしいですか？"
+    confirm_destroy: "本当に削除してもよろしいですか？"

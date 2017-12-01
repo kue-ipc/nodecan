@@ -6,7 +6,7 @@ class OsVersionsController < ApplicationController
   # GET /os_versions
   # GET /os_versions.json
   def index
-    @os_versions = OsVersion.all.includes(os_product: :os_family)
+    @os_versions = OsVersion.includes(os_product: :os_family).order('os_product_id, name')
   end
 
   # GET /os_versions/1

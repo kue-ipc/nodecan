@@ -1,0 +1,18 @@
+ja:
+  activerecord:
+    attributes:
+      os_famiry:
+        name: "名前"
+      os_product:
+        name: "名前"
+      os_version:
+        name: "名前"
+        os_family: "OSファミリー"
+        os_product: "OS製品"
+        version: "バージョン"
+        release: "リリース日"
+        end_of_life: "サポート終了日"
+    models:
+      os_family: "OSファミリー"
+      os_product: "OS製品"
+      os_version: "OSバージョン"

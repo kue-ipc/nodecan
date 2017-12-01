@@ -1,11 +1,11 @@
-p#notice = notice
-
 p
-  strong Name:
+  strong
+    = OsVersion.human_attribute_name(:name)
+    | :
   = @os_version.name
 p
   strong Os product:
-  = @os_version.os_product
+  = @os_version.os_product.name
 p
   strong Version:
   = @os_version.version

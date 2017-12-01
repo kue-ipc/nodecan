@@ -17,8 +17,8 @@
     = f.text_field :version
   .field
     = f.label :release
-    = f.date_select :release
+    = f.date_select :release, include_blank: true
   .field
     = f.label :end_of_life
-    = f.date_select :end_of_life
+    = f.date_select :end_of_life, include_blank: true
   .actions = f.submit

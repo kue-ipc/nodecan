@@ -30,4 +30,11 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  listing_models: "Listing %{name}"
+  action:
+    edit: "Edit"
+    show: "Show"
+    destroy: "Destroy"
+    new: "New %{name}"
+    confirm: "Are you sure?"
+    confirm_destroy: "Do you want to destroy it?"
