@@ -1,4 +1,5 @@
 class Ipv4Network < IpNetwork
+  include NetworkType
   belongs_to :network
-  enum type: TYPES
+  has_many :ip4_pools
 end

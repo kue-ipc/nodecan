@@ -1,4 +1,5 @@
 class Ipv6Network < IpNetwork
+  include NetworkType
   belongs_to :network
-  enum type: TYPES
+  has_many :ip6_pools
 end
