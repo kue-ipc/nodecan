@@ -8,6 +8,8 @@ class User < ApplicationRecord
   # devise :database_authenticatable,
   devise :ldap_authenticatable,
          :trackable, :validatable, :timeoutable
+  has_many :networks, through: :user_networks
+  has_many :user_networks
 
   before_validation :set_email_from_ldap, :set_display_name_from_ldap
 
