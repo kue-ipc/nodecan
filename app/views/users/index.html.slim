@@ -1,15 +1,23 @@
 h1 Listing users
 
-table
+table.table
   thead
     tr
-      th
-      th
-      th
+      th[scope="col"] = User.human_attribute_name(:username)
+      th[scope="col"] = User.human_attribute_name(:display_name)
+      th[scope="col"] = User.human_attribute_name(:admin)
+      th[scope="col"]
+      th[scope="col"]
+      th[scope="col"]
 
   tbody
     - @users.each do |user|
       tr
+        td[scope="row"] = user.username
+        td = user.display_name
+        td
+          - if user.admin
+            = octicon 'check', class: 'text-success'
         td = link_to 'Show', user
         td = link_to 'Edit', edit_user_path(user)
         td = link_to 'Destroy', user, data: { confirm: 'Are you sure?' }, method: :delete
