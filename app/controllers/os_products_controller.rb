@@ -1,5 +1,6 @@
 class OsProductsController < ApplicationController
   before_action :authenticate_user!
+  before_action :require_admin!
   before_action :set_os_product, only: [:show, :edit, :update, :destroy]
 
   # GET /os_products
