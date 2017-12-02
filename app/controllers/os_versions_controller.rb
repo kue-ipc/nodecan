@@ -1,7 +1,7 @@
 class OsVersionsController < ApplicationController
   before_action :authenticate_user!
+  before_action :require_admin!
   before_action :set_os_version, only: [:show, :edit, :update, :destroy]
-  before_action :require_admin
 
   # GET /os_versions
   # GET /os_versions.json

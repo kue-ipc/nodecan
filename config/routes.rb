@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   resources :nodes
   resources :networks
   devise_for :users
+  namespace :admin do
+    resources :users
+  end
 end
