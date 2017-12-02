@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    attributes:
+      node:
+        name: "名前"
+        owner: "所有者"
+    models:
+      node: "端末"
+      node_software: "端末ソフトウェア"
+      node_hardware: "端末ハードウェア"
