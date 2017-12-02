@@ -3,7 +3,7 @@ h1 Listing networks
 table
   thead
     tr
-      th Name
+      th = Network.human_attribute_name(:name)
       th Display name
       th Vlan
       th Use ipv4
@@ -19,8 +19,6 @@ table
       tr
         td = network.name
         td = network.vlan
-        td = network.use_ipv4
-        td = network.use_ipv6
         td = network.use_auth
         td = network.note
         td = link_to 'Show', network

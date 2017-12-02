@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    attributes:
+      network:
+        name: "名前"
+        vlan: "VLAN番号"
+        use_auth: "認証使用"
+        note: "備考"
+    models:
+      network: "ネットワーク"
+      ipv4_network: "IPv4ネットワーク"
+      ipv6_network: "IPv6ネットワーク"
+      ipv4_pool: "IPv4プール"
+      ipv6_pool: "IPv6プール"

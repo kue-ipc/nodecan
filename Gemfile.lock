@@ -87,6 +87,7 @@ GEM
       activesupport (>= 4.2.0)
     i18n (0.9.1)
       concurrent-ruby (~> 1.0)
+    ipaddress (0.8.3)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -228,6 +229,7 @@ DEPENDENCIES
   devise
   devise-i18n
   devise_ldap_authenticatable!
+  ipaddress
   jbuilder (~> 2.5)
   net-ldap
   octicons_helper

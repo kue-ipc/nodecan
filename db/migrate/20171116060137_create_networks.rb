@@ -3,8 +3,6 @@ class CreateNetworks < ActiveRecord::Migration[5.1]
     create_table :networks do |t|
       t.string :name, null: false
       t.integer :vlan, limit: 2
-      t.boolean :use_ipv4, null: false, default: false
-      t.boolean :use_ipv6, null: false, default: false
       t.boolean :use_auth, null: false, default: false
       t.text :note
 
