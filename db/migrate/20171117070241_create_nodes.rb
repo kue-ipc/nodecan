@@ -2,7 +2,7 @@ class CreateNodes < ActiveRecord::Migration[5.1]
   def change
     create_table :nodes do |t|
       t.string :name, null: false
-      t.references :user, foreign_key: true
+      t.references :owner, foreign_key: { to_table: :user }
       t.timestamp :confirmed
       t.text :note
 
