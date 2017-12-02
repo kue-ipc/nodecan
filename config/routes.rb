@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :os_products, path: 'products'
   end
   resources :os_versions, path: 'os'
-  namespace :admin do
+  scope '/admin' do
     resources :users
   end
 end
