@@ -3,7 +3,7 @@ class Nic < ApplicationRecord
   belongs_to :node
   belongs_to :network
 
-  enum type: { wired: 0, wireless: 1, virtual: 2 }
+  enum network_type: { wired: 0, wireless: 1, virtual: 2 }
   enum ipv4_setting: IP_SETTINGS, _prefix: :ipv4
   enum ipv6_setting: IP_SETTINGS, _prefix: :ipv6
 end

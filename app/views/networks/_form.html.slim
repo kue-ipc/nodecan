@@ -11,16 +11,20 @@
     = f.text_field :name
   .field
     = f.label :vlan
-    = f.number_field :vlan
+    = f.number_field :vlan, min: 0, max: 4095
+  .field
+    = f.label :use_auth
+    = f.check_box :use_auth
   .field
     = f.label :use_ipv4
     = f.check_box :use_ipv4
   .field
-    = f.label :use_ipv6
-    = f.check_box :use_ipv6
-  .field
-    = f.label :use_auth
-    = f.check_box :use_auth
+    = f.label :ipv4_nework
+    = f.fields_for @network.ipv4_network do |f4|
+      = f4.select :network_type, Ipv4Network.network_types.keys.to_a, {}
+      = f4.text_field :address_text, maxlength: 15
+      = f4.number_field :netmask, min: 0, max: 32
+      = f4.text_field :gateway_text, maxlength: 15
   .field
     = f.label :note
     = f.text_area :note

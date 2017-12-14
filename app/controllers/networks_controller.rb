@@ -16,6 +16,7 @@ class NetworksController < ApplicationController
   # GET /networks/new
   def new
     @network = Network.new
+    @network.ipv4_network = Ipv4Network.new
   end
 
   # GET /networks/1/edit
@@ -70,6 +71,12 @@ class NetworksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def network_params
-      params.require(:network).permit(:name, :vlan, :use_ipv4, :use_ipv6, :use_auth, :note)
+      network = params.require(:network).permit(:name, :vlan, :use_auth, :use_ipv4, :use_ipv6, :note,
+        ipv4_network: [:network_type])
+      network[:ipv4_network] = nil unless network[:use_ipv4]
+      network[:ipv6_network] = nil unless network[:use_ipv6]
+      network.delete(:use_ipv4)
+      network.delete(:use_ipv6)
+      network
     end
 end
