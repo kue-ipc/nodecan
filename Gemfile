@@ -36,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'rails-i18n', '~> 5.0.0'
+gem 'enum_help'
 gem 'slim-rails'
 gem 'devise'
 gem 'devise-i18n'
