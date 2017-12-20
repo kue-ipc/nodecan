@@ -6,26 +6,48 @@
         - @network.errors.full_messages.each do |message|
           li = message
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :vlan
-    = f.number_field :vlan, min: 0, max: 4095
-  .field
-    = f.label :use_auth
-    = f.check_box :use_auth
-  .field
-    = f.label :use_ipv4
-    = f.check_box :use_ipv4
-  .field
-    = f.label :ipv4_nework
-    = f.fields_for @network.ipv4_network do |f4|
-      = f4.select :network_type, Ipv4Network.network_types.keys.to_a, {}
-      = f4.text_field :address_text, maxlength: 15
-      = f4.number_field :netmask, min: 0, max: 32
-      = f4.text_field :gateway_text, maxlength: 15
-  .field
-    = f.label :note
-    = f.text_area :note
-  .actions = f.submit
+  .form-group.row
+    = f.label :name, class: 'col-sm-2 col-form-label'
+    .col-sm-10
+      = f.text_field :name, class: 'form-control'
+  .form-group.row
+    = f.label :vlan, class: 'col-sm-2 col-form-label'
+    .col-sm-10
+      = f.number_field :vlan, min: 0, max: 4095, class: 'form-control'
+  .form-group.row
+    .col-sm-2
+      = Network.human_attribute_name(:use_auth)
+    .col-sm-10
+      .form-check
+        = f.label :use_auth, class: 'form-check-label' do
+          = f.check_box :use_auth, class: 'form-check-input'
+          = Network.human_attribute_name(:use_auth)
+  .form-group.row
+    = f.label :ipv4_nework, class: 'col-sm-2 col-form-label'
+    .col-sm-10
+      .form-check
+        = f.label :use_ipv4, class: 'form-check-label' do
+          = f.check_box :use_ipv4, class: 'form-check-input'
+          = Network.human_attribute_name(:use_ipv4)
+      .form-row.align-items-center
+        = f.fields_for @network.ipv4_network do |f4|
+          .col-auto
+            = f4.label :network_type
+            = f4.select :network_type, Ipv4Network.network_types.keys.to_a, {}, class: 'form-control'
+          .col-auto
+            = f4.label :address_text
+            = f4.text_field :address_text, maxlength: 15, class: 'form-control'
+          .col-auto
+            br
+            | /
+          .col-auto
+            = f4.label :netmask
+            = f4.number_field :netmask, min: 0, max: 32, class: 'form-control'
+          .col-auto
+            = f4.label :gateway_text
+            = f4.text_field :gateway_text, maxlength: 15, class: 'form-control'
+  .form-group.row
+    = f.label :note, class: 'col-sm-2 col-form-label'
+    .col-sm-10
+      = f.text_area :note, class: 'form-control'
+  .actions = f.submit class: 'form-control'
