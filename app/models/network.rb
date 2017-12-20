@@ -6,7 +6,6 @@ class Network < ApplicationRecord
   accepts_nested_attributes_for :ipv4_network
   accepts_nested_attributes_for :ipv6_network
 
-
   def use_ipv4
     !ipv4_network.nil?
   end

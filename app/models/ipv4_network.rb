@@ -6,6 +6,6 @@ class Ipv4Network < ApplicationRecord
   include NetworkType
   belongs_to :network
   has_many :ip4_pools, dependent: :destroy
-  attribute :address, :ipv4_address
-  attribute :gateway, :ipv4_address
+  attribute :address, :ipv4_address, default: 0
+  attribute :gateway, :ipv4_address, default: 0
 end

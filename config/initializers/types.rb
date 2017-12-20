@@ -4,7 +4,7 @@ require 'ipaddress'
 
 class Ipv4AddressType < ActiveRecord::Type::Binary
   def deserialize(value)
-    IPAddress::IPv4.parse_data(value)
+    IPAddress::IPv4.parse_data(value) unless value.nil?
   end
 
   def cast(value)

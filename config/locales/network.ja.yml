@@ -12,3 +12,9 @@ ja:
       ipv6_network: "IPv6ネットワーク"
       ipv4_pool: "IPv4プール"
       ipv6_pool: "IPv6プール"
+  enums:
+    ipv4_network:
+      network_type:
+        static: "固定"
+        dhcp: "自動(DHCP)"
+        auto: "自動"

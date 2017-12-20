@@ -33,7 +33,7 @@
         = f.fields_for @network.ipv4_network do |f4|
           .col-auto
             = f4.label :network_type
-            = f4.select :network_type, Ipv4Network.network_types.keys.to_a, {}, class: 'form-control'
+            = f4.select :network_type, Ipv4Network.network_types.keys, {}, class: 'form-control'
           .col-auto
             = f4.label :address
             = f4.text_field :address, maxlength: 15, class: 'form-control'
