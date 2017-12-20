@@ -35,8 +35,8 @@
             = f4.label :network_type
             = f4.select :network_type, Ipv4Network.network_types.keys.to_a, {}, class: 'form-control'
           .col-auto
-            = f4.label :address_text
-            = f4.text_field :address_text, maxlength: 15, class: 'form-control'
+            = f4.label :address
+            = f4.text_field :address, maxlength: 15, class: 'form-control'
           .col-auto
             br
             | /
@@ -44,8 +44,8 @@
             = f4.label :netmask
             = f4.number_field :netmask, min: 0, max: 32, class: 'form-control'
           .col-auto
-            = f4.label :gateway_text
-            = f4.text_field :gateway_text, maxlength: 15, class: 'form-control'
+            = f4.label :gateway
+            = f4.text_field :gateway, maxlength: 15, class: 'form-control'
   .form-group.row
     = f.label :note, class: 'col-sm-2 col-form-label'
     .col-sm-10
