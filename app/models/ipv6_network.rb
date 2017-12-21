@@ -6,6 +6,6 @@ class Ipv6Network < ApplicationRecord
   include NetworkType
   belongs_to :network
   has_many :ip6_pools, dependent: :destroy
-  attribute :address, :ipv6_address, default: 0
-  attribute :gateway, :ipv6_address, default: 0
+  attribute :address, :ipv6_address, default: IPAddress::IPv6.new('::')
+  attribute :gateway, :ipv6_address
 end
