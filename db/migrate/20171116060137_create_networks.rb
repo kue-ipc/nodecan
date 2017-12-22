@@ -7,6 +7,7 @@ class CreateNetworks < ActiveRecord::Migration[5.1]
       t.text :note
 
       t.index :name, unique: true
+      t.index :vlan
 
       t.timestamps
     end
