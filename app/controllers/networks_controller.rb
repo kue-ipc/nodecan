@@ -16,7 +16,6 @@ class NetworksController < ApplicationController
   # GET /networks/new
   def new
     @network = Network.new
-    @network.ipv4_network = Ipv4Network.new
   end
 
   # GET /networks/1/edit

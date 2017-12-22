@@ -30,7 +30,7 @@
           = f.check_box :use_ipv4, class: 'form-check-input'
           = Network.human_attribute_name(:use_ipv4)
       .form-row.align-items-center
-        = f.fields_for @network.ipv4_network do |f4|
+        = f.fields_for @network.ipv4_network || Ipv4Network.new(address: nil) do |f4|
           .col-auto
             = f4.label :network_type
             = f4.select :network_type, Ipv4Network.network_types.keys, {}, class: 'form-control'
