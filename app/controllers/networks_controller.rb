@@ -75,18 +75,18 @@ class NetworksController < ApplicationController
       ipv6_network: [:network_type, :address, :netmask, :gateway,
         {ip_pools_attributes: [:network_type, :first, :last]}])
 
-    ipv4_network_params = if checked_params(:use_ipv4)
-      {
+    ipv4_network_params = if !checked_params[:use_ipv4].to_i.zero?
+      [{
         network_type: checked_params[:ipv4_network][:network_type],
         address: checked_params[:ipv4_network][:address] + '/' + checked_params[:ipv4_network][:netmask],
         gateway: checked_params[:ipv4_network][:gateway],
         ip_pools_attributes: checked_params[:ipv4_network][:ip_pools_attributes],
-      }
+      }]
     else
       []
     end
 
-    ipv6_network_params = if checked_params(:use_ipv6)
+    ipv6_network_params = if !checked_params[:use_ipv6].to_i.zero?
       [{
         network_type: checked_params[:ipv6_network][:network_type],
         address: checked_params[:ipv6_network][:address] + '/' + checked_params[:ipv6_network][:netmask],
@@ -113,7 +113,7 @@ class NetworksController < ApplicationController
       vlan: checked_params[:vlan],
       use_auth: checked_params[:use_auth],
       note: checked_params[:note],
-      ip_networks_attributes: ipv4_network_params + ipv6_network_params + old_ip_networks_destroy_params
+      ip_networks_attributes: ipv4_network_params + ipv6_network_params + old_ip_networks_destroy_params,
     }
   end
 end
