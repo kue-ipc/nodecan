@@ -61,11 +61,18 @@
         /     .col-auto
         /       = f_ipv4pool.text_field :last, maxlength: 15, class: 'form-control'
         #ipv4-pools
+        .form-row.align-items-center.m-1
+          .col-auto
+            = button_tag type: 'button', class: 'btn btn-outline-primary', id: 'ipv4-pool-add' do
+              = octicon 'plus'
         script#ipv4-pools-list type="application/json"
           == ip_pools_to_json(ipv4_network.ip_pools)
         = f_ipv4.fields_for :ip_pools, IpPool.new do |f_ipv4pool|
           template#ipv4-pool-0
-            .form-row.align-items-center
+            .form-row.align-items-center.m-1
+              .col-auto
+                = button_tag type: 'button', class: 'btn btn-outline-danger ip-pool-delete' do
+                  = octicon 'dash'
               .col-auto
                 = f_ipv4pool.select :network_type, IpPool.network_types.keys, {},
                     class: 'form-control ip-pool-network-type-select'
@@ -76,15 +83,23 @@
                 | 〜
               .col-auto
                 = f_ipv4pool.text_field :last, maxlength: 15,
-                    class: 'form-control, ip-pool-last-text'
+                    class: 'form-control ip-pool-last-text'
         coffee:
           ipv4PoolTemplate = document.getElementById('ipv4-pool-0')
           ipv4Pools = document.getElementById('ipv4-pools')
           ipv4PoolsList = JSON.parse(document.getElementById('ipv4-pools-list').textContent)
-          for ipv4Pool, i in ipv4PoolsList
+          ipv4PoolCount = 0
+
+          addDeleteEvent = (node) ->
+            node.getElementsByClassName('ip-pool-delete').item(0).addEventListener 'click', (e) ->
+              ipv4Pools.removeChild(node)
+
+          for ipv4Pool in ipv4PoolsList
+            ipv4PoolCount++
             ipv4PoolNode = document.createElement('div')
+            ipv4PoolNode.id = "ipv4-pool-#{ipv4PoolCount}"
             ipv4PoolNode.innerHTML = ipv4PoolTemplate.innerHTML
-              .replace(/\b0\b/g, i.toString()).replace(/_0_/g, "_#{i}_")
+              .replace(/\[0\]/g, "[#{ipv4PoolCount}]").replace(/_0_/g, "_#{ipv4PoolCount}_")
             for networkTypeSelect in ipv4PoolNode.getElementsByClassName('ip-pool-network-type-select')
               for option in networkTypeSelect.getElementsByTagName('option')
                 if option.value == ipv4Pool.network_type
@@ -95,7 +110,18 @@
               firstText.value = ipv4Pool.first
             for lastText in ipv4PoolNode.getElementsByClassName('ip-pool-last-text')
               lastText.value = ipv4Pool.last
+            addDeleteEvent(ipv4PoolNode)
             ipv4Pools.appendChild(ipv4PoolNode)
+
+          document.getElementById('ipv4-pool-add').addEventListener 'click', (e) ->
+            ipv4PoolCount++
+            ipv4PoolNode = document.createElement('div')
+            ipv4PoolNode.id = "ipv4-pool-#{ipv4PoolCount}"
+            ipv4PoolNode.innerHTML = ipv4PoolTemplate.innerHTML
+              .replace(/\[0\]/g, "[#{ipv4PoolCount}]").replace(/_0_/g, "_#{ipv4PoolCount}_")
+            addDeleteEvent(ipv4PoolNode)
+            ipv4Pools.appendChild(ipv4PoolNode)
+
 
   / IPv6
   .form-group.row
