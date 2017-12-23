@@ -1,4 +1,4 @@
-class CreateIpv4Pools < ActiveRecord::Migration[5.1]
+class CreateIpPools < ActiveRecord::Migration[5.1]
   def change
     create_table :ip_pools do |t|
       t.references :ip_network, foreign_key: true
