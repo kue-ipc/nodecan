@@ -62,27 +62,39 @@ class NetworksController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_network
-      @network = Network.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  private def set_network
+    @network = Network.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def network_params
-      network = params.require(:network).permit(:name, :vlan, :use_auth, :use_ipv4, :use_ipv6, :note,
-        ipv4_network: [:network_type, :address, :netmask, :gateway])
-      if network[:use_ipv4]
-        network[:ipv4_network_attributes] = network[:ipv4_network]
-      end
-      if network[:use_ipv6]
-        network[:ipv6_network_attributes] = network[:ipv6_network]
-      end
-      network.delete(:use_ipv4)
-      network.delete(:use_ipv6)
-      network.delete(:ipv4_network)
-      network.delete(:ipv6_network)
-      p network
-      network
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  private def network_params
+    checked_params = params.require(:network).permit(:name, :vlan, :use_auth, :use_ipv4, :use_ipv6, :note,
+      ipv4_network: [:id, :network_type, :address, :netmask, :gateway],
+      ipv6_network: [:id, :network_type, :address, :netmask, :gateway])
+
+    ipv4_network_params = {
+      id: checked_params[:ipv4_network][:id],
+      network_type: checked_params[:ipv4_network][:network_type],
+      address: checked_params[:ipv4_network][:address] + '/' + checked_params[:ipv4_network][:netmask],
+      gateway: checked_params[:ipv4_network][:gateway],
+      _destroy: checked_params[:use_ipv4].to_i.zero?,
+    }
+
+    ipv6_network_params = {
+      id: checked_params[:ipv6_network][:id],
+      network_type: checked_params[:ipv6_network][:network_type],
+      address: checked_params[:ipv6_network][:address] + '/' + checked_params[:ipv6_network][:netmask],
+      gateway: checked_params[:ipv6_network][:gateway],
+      _destroy: checked_params[:use_ipv6].to_i.zero?,
+    }
+
+    {
+      name: checked_params[:name],
+      vlan: checked_params[:vlan],
+      use_auth: checked_params[:use_auth],
+      note: checked_params[:note],
+      ip_networks_attributes: [ipv4_network_params, ipv6_network_params],
+    }
+  end
 end

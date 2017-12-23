@@ -98,17 +98,3 @@ Style/StringLiterals:
 Style/StringLiteralsInInterpolation:
   Exclude:
     - 'bin/yarn'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: MinSize, SupportedStyles.
-# SupportedStyles: percent, brackets
-
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyleForMultiline, SupportedStylesForMultiline.
-# SupportedStylesForMultiline: comma, consistent_comma, no_comma
-Style/TrailingCommaInLiteral:
-  Exclude:
-    - 'config/environments/development.rb'
-    - 'config/environments/test.rb'

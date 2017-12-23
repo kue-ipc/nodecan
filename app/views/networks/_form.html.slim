@@ -22,6 +22,7 @@
         = f.label :use_auth, class: 'form-check-label' do
           = f.check_box :use_auth, class: 'form-check-input'
           = Network.human_attribute_name(:use_auth)
+  / IPv4
   .form-group.row
     = f.label :ipv4_nework, class: 'col-sm-2 col-form-label'
     .col-sm-10
@@ -30,22 +31,51 @@
           = f.check_box :use_ipv4, class: 'form-check-input'
           = Network.human_attribute_name(:use_ipv4)
       .form-row.align-items-center
-        = f.fields_for @network.ipv4_network || Ipv4Network.new(address: nil) do |f4|
+        - ipv4_network = @network.ipv4_networks.first || IpNetwork.new
+        = f.fields_for :ipv4_network, ipv4_network do |f_ipv4|
+          = f_ipv4.hidden_field :id
           .col-auto
-            = f4.label :network_type
-            = f4.select :network_type, Ipv4Network.network_types.keys, {}, class: 'form-control'
+            = f_ipv4.label :network_type
+            = f_ipv4.select :network_type, IpNetwork.network_types.keys, {}, class: 'form-control'
           .col-auto
-            = f4.label :address
-            = f4.text_field :address, maxlength: 15, class: 'form-control'
+            = f_ipv4.label :address
+            = f_ipv4.text_field :address, maxlength: 15, class: 'form-control'
           .col-auto
             br
             | /
           .col-auto
-            = f4.label :netmask
-            = f4.number_field :netmask, min: 0, max: 32, class: 'form-control'
+            = f_ipv4.label :netmask
+            = f_ipv4.number_field :netmask, min: 0, max: 32, class: 'form-control'
           .col-auto
-            = f4.label :gateway
-            = f4.text_field :gateway, maxlength: 15, class: 'form-control'
+            = f_ipv4.label :gateway
+            = f_ipv4.text_field :gateway, maxlength: 15, class: 'form-control'
+  / IPv6
+  .form-group.row
+    = f.label :ipv6_nework, class: 'col-sm-2 col-form-label'
+    .col-sm-10
+      .form-check
+        = f.label :use_ipv6, class: 'form-check-label' do
+          = f.check_box :use_ipv6, class: 'form-check-input'
+          = Network.human_attribute_name(:use_ipv6)
+      .form-row.align-items-center
+        - ipv6_network = @network.ipv6_networks.first || IpNetwork.new
+        = f.fields_for :ipv6_network, ipv6_network do |f_ipv6|
+          = f_ipv6.hidden_field :id
+          .col-auto
+            = f_ipv6.label :network_type
+            = f_ipv6.select :network_type, IpNetwork.network_types.keys, {}, class: 'form-control'
+          .col-auto
+            = f_ipv6.label :address
+            = f_ipv6.text_field :address, maxlength: 15, class: 'form-control'
+          .col-auto
+            br
+            | /
+          .col-auto
+            = f_ipv6.label :netmask
+            = f_ipv6.number_field :netmask, min: 0, max: 32, class: 'form-control'
+          .col-auto
+            = f_ipv6.label :gateway
+            = f_ipv6.text_field :gateway, maxlength: 15, class: 'form-control'
   .form-group.row
     = f.label :note, class: 'col-sm-2 col-form-label'
     .col-sm-10
