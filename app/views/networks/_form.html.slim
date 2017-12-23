@@ -81,7 +81,6 @@
           ipv4PoolTemplate = document.getElementById('ipv4-pool-0')
           ipv4Pools = document.getElementById('ipv4-pools')
           ipv4PoolsList = JSON.parse(document.getElementById('ipv4-pools-list').textContent)
-          console.log(ipv4PoolsList)
           for ipv4Pool, i in ipv4PoolsList
             ipv4PoolNode = document.createElement('div')
             ipv4PoolNode.innerHTML = ipv4PoolTemplate.innerHTML
