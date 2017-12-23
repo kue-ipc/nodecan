@@ -70,31 +70,50 @@ class NetworksController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   private def network_params
     checked_params = params.require(:network).permit(:name, :vlan, :use_auth, :use_ipv4, :use_ipv6, :note,
-      ipv4_network: [:id, :network_type, :address, :netmask, :gateway],
-      ipv6_network: [:id, :network_type, :address, :netmask, :gateway])
+      ipv4_network: [:network_type, :address, :netmask, :gateway,
+        {ip_pools_attributes: [:network_type, :first, :last]}],
+      ipv6_network: [:network_type, :address, :netmask, :gateway,
+        {ip_pools_attributes: [:network_type, :first, :last]}])
 
-    ipv4_network_params = {
-      id: checked_params[:ipv4_network][:id],
-      network_type: checked_params[:ipv4_network][:network_type],
-      address: checked_params[:ipv4_network][:address] + '/' + checked_params[:ipv4_network][:netmask],
-      gateway: checked_params[:ipv4_network][:gateway],
-      _destroy: checked_params[:use_ipv4].to_i.zero?,
-    }
+    ipv4_network_params = if checked_params(:use_ipv4)
+      {
+        network_type: checked_params[:ipv4_network][:network_type],
+        address: checked_params[:ipv4_network][:address] + '/' + checked_params[:ipv4_network][:netmask],
+        gateway: checked_params[:ipv4_network][:gateway],
+        ip_pools_attributes: checked_params[:ipv4_network][:ip_pools_attributes],
+      }
+    else
+      []
+    end
 
-    ipv6_network_params = {
-      id: checked_params[:ipv6_network][:id],
-      network_type: checked_params[:ipv6_network][:network_type],
-      address: checked_params[:ipv6_network][:address] + '/' + checked_params[:ipv6_network][:netmask],
-      gateway: checked_params[:ipv6_network][:gateway],
-      _destroy: checked_params[:use_ipv6].to_i.zero?,
-    }
+    ipv6_network_params = if checked_params(:use_ipv6)
+      [{
+        network_type: checked_params[:ipv6_network][:network_type],
+        address: checked_params[:ipv6_network][:address] + '/' + checked_params[:ipv6_network][:netmask],
+        gateway: checked_params[:ipv6_network][:gateway],
+        ip_pools_attributes: checked_params[:ipv6_network][:ip_pools_attributes],
+      }]
+    else
+      []
+    end
+
+    old_ip_networks_destroy_params = if @network
+      @network.ip_networks.map do |ip_net|
+        {
+          id: ip_net.id,
+          _destroy: true
+        }
+      end
+    else
+      []
+    end
 
     {
       name: checked_params[:name],
       vlan: checked_params[:vlan],
       use_auth: checked_params[:use_auth],
       note: checked_params[:note],
-      ip_networks_attributes: [ipv4_network_params, ipv6_network_params],
+      ip_networks_attributes: ipv4_network_params + ipv6_network_params + old_ip_networks_destroy_params
     }
   end
 end
