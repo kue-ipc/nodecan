@@ -9,7 +9,7 @@ class User < ApplicationRecord
   devise :ldap_authenticatable,
          :trackable, :validatable, :timeoutable
   has_many :networks, through: :user_networks
-  has_many :user_networks
+  has_many :user_networks, dependent: :destroy
 
   before_validation :set_email_from_ldap, :set_display_name_from_ldap
 
