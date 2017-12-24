@@ -5,5 +5,41 @@
       ul
         - @user.errors.full_messages.each do |message|
           li = message
+  .form-group.row
+    = f.label :username, class: 'col-sm-2 col-form-label'
+    .col-sm-10
+      = f.text_field :username, class: 'form-control-plaintext', readonly: true
+  .form-group.row
+    = f.label :email, class: 'col-sm-2 col-form-label'
+    .col-sm-10
+      = f.text_field :email, class: 'form-control-plaintext', readonly: true
+  .form-group.row
+    = f.label :display_name, class: 'col-sm-2 col-form-label'
+    .col-sm-10
+      = f.text_field :display_name, class: 'form-control-plaintext', readonly: true
+  .form-group.row
+    .col-sm-2
+        = f.label :admin
+    .col-sm-10
+      .form-check
+        = f.label :admin, class: 'form-check-label' do
+          = f.check_box :admin, class: 'form-check-input'
+          = Network.human_attribute_name(:admin)
+  .form-group.row
+    = f.label :networks, class: 'col-sm-2 col-form-label'
+    .col-sm-2
+        = f.label :default_network
 
-  .actions = f.submit
+          = @user.default_network.name
+        - if @user.default_network.nil?
+        @user.assignable_network.size
+
+
+
+networks
+  .form-group.row
+    = f.label :vlan, class: 'col-sm-2 col-form-label'
+    .col-sm-10
+      = f.number_field :vlan, min: 0, max: 4095, class: 'form-control'
+
+  .actions = f.submit class: 'form-control'

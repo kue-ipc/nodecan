@@ -8,8 +8,8 @@ class User < ApplicationRecord
   # devise :database_authenticatable,
   devise :ldap_authenticatable,
          :trackable, :validatable, :timeoutable
-  has_many :networks, through: :user_networks
-  has_many :user_networks, dependent: :destroy
+  has_many :network_users, dependent: :destroy
+  has_many :networks, through: :network_users
 
   before_validation :set_email_from_ldap, :set_display_name_from_ldap
 
@@ -25,5 +25,13 @@ class User < ApplicationRecord
 
   def admin?
     admin
+  end
+
+  def default_network
+    network_users.find_by(default: true).network
+  end
+
+  def assignable_networks
+    network_users.where(assignable: true).map(&:network)
   end
 end
