@@ -71,6 +71,42 @@ def read_seeds_yaml_os
   end
 end
 
+def setup_network
+  Network.new({
+    name: 'default',
+    vlan: 1,
+    use_auth: true,
+    note: 'Default VLAN',
+    ip_networks_attributes: [
+      {
+        network_type: 'static',
+        address: '192.168.1.0/24',
+        gateway: '192.168.1.254',
+        ip_pools_attributes: [
+          network_type: 'static',
+          first: '192.168.1.1',
+          last: '192.168.1.253',
+        ]
+      }
+    ],
+  }).save
+  # reserved
+  [
+    {name: 'fddi-default', vlan: 1002},
+    {name: 'token-ring-default', vlan: 1003},
+    {name: 'fddinet-default', vlan: 1004},
+    {name: 'trnet-default', vlan: 1005},
+  ].each do |reserved_vlan|
+    Network.new({
+      name: reserved_vlan[:name],
+      vlan: reserved_vlan[:vlan],
+      use_auth: false,
+      note: 'Reserved VLAN',
+    }).save
+  end
+end
+
+setup_network
 setup_admin
 read_seeds_yaml_os
 # read_seeds_yaml_with_name(OsType)
