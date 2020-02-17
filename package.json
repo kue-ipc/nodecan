@@ -2,21 +2,21 @@
   "name": "nodecan",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "^3.0.2",
+    "@rails/webpacker": "^4.2.2",
     "babel-preset-react": "^6.24.1",
-    "bootbox": "^4.4.0",
-    "bootstrap": "4.0.0-beta.2",
+    "bootbox": "^5.4.0",
+    "bootstrap": "4.4.1",
     "coffee-loader": "^0.9.0",
-    "coffeescript": "^2.0.3",
-    "jquery": "^3.2.1",
-    "octicons": "^7.0.1",
-    "popper.js": "^1.12.9",
-    "prop-types": "^15.6.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "webpack-merge": "^4.1.1"
+    "coffeescript": "^2.5.1",
+    "jquery": "^3.4.1",
+    "octicons": "^8.5.0",
+    "popper.js": "^1.16.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "webpack-merge": "^4.2.2"
   },
   "devDependencies": {
-    "webpack-dev-server": "^2.9.5"
+    "webpack-dev-server": "^3.10.3"
   }
 }

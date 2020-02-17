@@ -28,22 +28,22 @@ authorizations: &AUTHORIZATIONS
 
 development:
   host: localhost
-  port: 3389
+  port: 389
   attribute: uid
   base: ou=People,dc=example,dc=jp
   admin_user: cn=admin,dc=example,dc=jp
-  admin_password: admin_password
+  admin_password: pass
   ssl: false
   <<: *AUTHORIZATIONS
 
 test:
   host: localhost
-  port: 3389
+  port: 389
   attribute: uid
   base: ou=People,dc=example,dc=jp
   admin_user: cn=admin,dc=example,dc=jp
-  admin_password: admin_password
-  ssl: simple_tls
+  admin_password: pass
+  ssl: false
   <<: *AUTHORIZATIONS
 
 production:

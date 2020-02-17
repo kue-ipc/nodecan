@@ -4,7 +4,7 @@ class CreateNetworkUsers < ActiveRecord::Migration[5.1]
       t.references :network, foreign_key: true
       t.references :user, foreign_key: true
       t.boolean :default, null: false, default: false
-      t.booelan :assignable, null: false, default: true
+      t.boolean :assignable, null: false, default: true
 
       t.timestamps
     end
