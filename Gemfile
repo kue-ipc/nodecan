@@ -38,6 +38,13 @@ gem 'devise_ldap_authenticatable'
 gem 'octicons_helper'
 gem 'ipaddress'
 
+# CSS
+## bootstrap
+gem 'bootstrap', '~> 4.4.1'
+
+## FontAwesome
+gem 'font-awesome-rails'
+
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
