@@ -122,6 +122,8 @@ ActiveRecord::Schema.define(version: 2017_12_24_093001) do
 
   create_table "os_families", force: :cascade do |t|
     t.string "name"
+    t.integer "order", default: 0, null: false
+    t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_os_families_on_name", unique: true
@@ -129,7 +131,9 @@ ActiveRecord::Schema.define(version: 2017_12_24_093001) do
 
   create_table "os_products", force: :cascade do |t|
     t.string "name"
-    t.bigint "os_family_id"
+    t.integer "order", default: 0, null: false
+    t.text "description"
+    t.bigint "os_family_id", null: false
     t.boolean "require_security_software"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -139,7 +143,9 @@ ActiveRecord::Schema.define(version: 2017_12_24_093001) do
 
   create_table "os_versions", force: :cascade do |t|
     t.string "name"
-    t.bigint "os_product_id"
+    t.integer "order", default: 0, null: false
+    t.text "description"
+    t.bigint "os_product_id", null: false
     t.string "version"
     t.date "release"
     t.date "end_of_life"
