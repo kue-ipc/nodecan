@@ -1,4 +1,4 @@
-class CreateNodeHadrwares < ActiveRecord::Migration[5.1]
+class CreateNodeHadrwares < ActiveRecord::Migration[6.0]
   def change
     create_table :node_hadrwares do |t|
       t.references :node, foreign_key: true

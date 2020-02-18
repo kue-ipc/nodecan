@@ -1,4 +1,4 @@
-class CreateNodeModels < ActiveRecord::Migration[5.1]
+class CreateNodeModels < ActiveRecord::Migration[6.0]
   def change
     create_table :node_models do |t|
       t.string :name, null: false

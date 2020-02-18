@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 2017_12_24_093001) do
     t.integer "network_type", limit: 2, default: 0, null: false
     t.cidr "address", null: false
     t.inet "gateway"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["address"], name: "index_ip_networks_on_address"
     t.index ["network_id"], name: "index_ip_networks_on_network_id"
   end
@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 2017_12_24_093001) do
     t.integer "network_type", limit: 2, default: 0, null: false
     t.inet "first", null: false
     t.inet "last", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["ip_network_id"], name: "index_ip_pools_on_ip_network_id"
   end
 
@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(version: 2017_12_24_093001) do
     t.bigint "user_id"
     t.boolean "default", default: false, null: false
     t.boolean "assignable", default: true, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["network_id"], name: "index_network_users_on_network_id"
     t.index ["user_id"], name: "index_network_users_on_user_id"
   end
@@ -52,8 +52,8 @@ ActiveRecord::Schema.define(version: 2017_12_24_093001) do
     t.integer "vlan", limit: 2
     t.boolean "use_auth", default: false, null: false
     t.text "note"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_networks_on_name", unique: true
     t.index ["vlan"], name: "index_networks_on_vlan"
   end
@@ -64,13 +64,15 @@ ActiveRecord::Schema.define(version: 2017_12_24_093001) do
     t.integer "network_type", limit: 2, default: 0, null: false
     t.bigint "network_id"
     t.integer "mac_address"
+    t.string "duid"
     t.integer "ipv4_setting", limit: 2, default: 0, null: false
     t.integer "ipv6_setting", limit: 2, default: 0, null: false
     t.integer "ipv4"
     t.binary "ipv6"
     t.datetime "connected"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["duid"], name: "index_nics_on_duid", unique: true
     t.index ["mac_address"], name: "index_nics_on_mac_address", unique: true
     t.index ["network_id"], name: "index_nics_on_network_id"
     t.index ["node_id"], name: "index_nics_on_node_id"
@@ -81,16 +83,16 @@ ActiveRecord::Schema.define(version: 2017_12_24_093001) do
     t.bigint "node_model_id"
     t.string "maker"
     t.string "product_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["node_id"], name: "index_node_hadrwares_on_node_id"
     t.index ["node_model_id"], name: "index_node_hadrwares_on_node_model_id"
   end
 
   create_table "node_models", force: :cascade do |t|
     t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_node_models_on_name", unique: true
   end
 
@@ -99,9 +101,8 @@ ActiveRecord::Schema.define(version: 2017_12_24_093001) do
     t.bigint "os_version_id"
     t.bigint "security_software_id"
     t.string "hostname"
-    t.string "duid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["hostname"], name: "index_node_softwares_on_hostname"
     t.index ["node_id"], name: "index_node_softwares_on_node_id"
     t.index ["os_version_id"], name: "index_node_softwares_on_os_version_id"
@@ -113,16 +114,16 @@ ActiveRecord::Schema.define(version: 2017_12_24_093001) do
     t.bigint "owner_id"
     t.datetime "confirmed"
     t.text "note"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_nodes_on_name"
     t.index ["owner_id"], name: "index_nodes_on_owner_id"
   end
 
   create_table "os_families", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_os_families_on_name", unique: true
   end
 
@@ -130,8 +131,8 @@ ActiveRecord::Schema.define(version: 2017_12_24_093001) do
     t.string "name"
     t.bigint "os_family_id"
     t.boolean "require_security_software"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_os_products_on_name", unique: true
     t.index ["os_family_id"], name: "index_os_products_on_os_family_id"
   end
@@ -142,8 +143,8 @@ ActiveRecord::Schema.define(version: 2017_12_24_093001) do
     t.string "version"
     t.date "release"
     t.date "end_of_life"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_os_versions_on_name", unique: true
     t.index ["os_product_id"], name: "index_os_versions_on_os_product_id"
   end
@@ -151,8 +152,8 @@ ActiveRecord::Schema.define(version: 2017_12_24_093001) do
   create_table "security_softwares", force: :cascade do |t|
     t.string "name"
     t.boolean "has_expiration"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_security_softwares_on_name", unique: true
   end
 
@@ -168,8 +169,8 @@ ActiveRecord::Schema.define(version: 2017_12_24_093001) do
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
     t.datetime "locked_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.string "username", null: false
     t.string "display_name"
     t.boolean "admin", default: false, null: false

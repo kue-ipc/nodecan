@@ -1,4 +1,4 @@
-class CreateOsVersions < ActiveRecord::Migration[5.1]
+class CreateOsVersions < ActiveRecord::Migration[6.0]
   def change
     create_table :os_versions do |t|
       t.string :name

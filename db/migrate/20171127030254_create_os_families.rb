@@ -1,4 +1,4 @@
-class CreateOsFamilies < ActiveRecord::Migration[5.1]
+class CreateOsFamilies < ActiveRecord::Migration[6.0]
   def change
     create_table :os_families do |t|
       t.string :name

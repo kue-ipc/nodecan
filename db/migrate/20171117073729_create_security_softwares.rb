@@ -1,4 +1,4 @@
-class CreateSecuritySoftwares < ActiveRecord::Migration[5.1]
+class CreateSecuritySoftwares < ActiveRecord::Migration[6.0]
   def change
     create_table :security_softwares do |t|
       t.string :name
