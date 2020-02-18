@@ -1,3 +1,4 @@
+require 'devise_ldap_authenticatable_authorizable'
 require 'devise_ldap_authenticatable_check_group_policy'
 require 'devise_ldap_authenticatable_nis_group_check'
 
