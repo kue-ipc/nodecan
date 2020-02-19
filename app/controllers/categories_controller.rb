@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_category, only: [:index, :new, :create]
 
   # GET /categories
   # GET /categories.json
@@ -65,6 +66,11 @@ class CategoriesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_category
       @category = Category.find(params[:id])
+      authorize @category
+    end
+
+    def authorize_category
+      authorize Category
     end
 
     # Only allow a list of trusted parameters through.

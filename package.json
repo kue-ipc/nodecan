@@ -10,6 +10,7 @@
     "coffee-loader": "0.9.0",
     "coffeescript": "2.5.1",
     "hyperapp": "^2.0.4",
+    "hyperapp-fx": "^2.0.0-beta.1",
     "turbolinks": "^5.2.0"
   },
   "devDependencies": {
