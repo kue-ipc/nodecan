@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :categories
+  resources :hardware_types
+  resources :operating_systems
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: "home#index"
   resources :security_softwares

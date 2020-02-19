@@ -1,0 +1,27 @@
+h1 Listing operating_systems
+
+table
+  thead
+    tr
+      th Name
+      th Description
+      th End of life
+      th Order
+      th
+      th
+      th
+
+  tbody
+    - @operating_systems.each do |operating_system|
+      tr
+        td = operating_system.name
+        td = operating_system.description
+        td = operating_system.end_of_life
+        td = operating_system.order
+        td = link_to 'Show', operating_system
+        td = link_to 'Edit', edit_operating_system_path(operating_system)
+        td = link_to 'Destroy', operating_system, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Operating system', new_operating_system_path

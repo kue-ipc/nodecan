@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Code:
+  = @hardware_type.code
+p
+  strong Name:
+  = @hardware_type.name
+p
+  strong Description:
+  = @hardware_type.description
+p
+  strong Category:
+  = @hardware_type.category
+p
+  strong Order:
+  = @hardware_type.order
+
+=> link_to 'Edit', edit_hardware_type_path(@hardware_type)
+'|
+=< link_to 'Back', hardware_types_path

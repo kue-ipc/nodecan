@@ -10,10 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2017_12_24_093001) do
+ActiveRecord::Schema.define(version: 2020_02_19_015458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.text "description"
+    t.integer "model", default: 0, null: false
+    t.integer "order"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["code", "model"], name: "index_categories_on_code_and_model", unique: true
+    t.index ["name", "model"], name: "index_categories_on_name_and_model", unique: true
+  end
+
+  create_table "hardware_types", force: :cascade do |t|
+    t.string "code"
+    t.string "name", null: false
+    t.text "description"
+    t.bigint "category_id"
+    t.integer "order", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_hardware_types_on_category_id"
+    t.index ["code"], name: "index_hardware_types_on_code", unique: true
+    t.index ["name"], name: "index_hardware_types_on_name", unique: true
+  end
 
   create_table "ip_networks", force: :cascade do |t|
     t.bigint "network_id"
@@ -120,6 +145,20 @@ ActiveRecord::Schema.define(version: 2017_12_24_093001) do
     t.index ["owner_id"], name: "index_nodes_on_owner_id"
   end
 
+  create_table "operating_systems", force: :cascade do |t|
+    t.string "code"
+    t.string "name", null: false
+    t.text "description"
+    t.bigint "category_id"
+    t.integer "order", default: 0, null: false
+    t.date "end_of_life"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_operating_systems_on_category_id"
+    t.index ["code"], name: "index_operating_systems_on_code", unique: true
+    t.index ["name"], name: "index_operating_systems_on_name", unique: true
+  end
+
   create_table "os_families", force: :cascade do |t|
     t.string "name"
     t.integer "order", default: 0, null: false
@@ -185,6 +224,7 @@ ActiveRecord::Schema.define(version: 2017_12_24_093001) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "hardware_types", "categories"
   add_foreign_key "ip_networks", "networks"
   add_foreign_key "ip_pools", "ip_networks"
   add_foreign_key "network_users", "networks"
@@ -197,6 +237,7 @@ ActiveRecord::Schema.define(version: 2017_12_24_093001) do
   add_foreign_key "node_softwares", "os_versions"
   add_foreign_key "node_softwares", "security_softwares"
   add_foreign_key "nodes", "users", column: "owner_id"
+  add_foreign_key "operating_systems", "categories"
   add_foreign_key "os_products", "os_families"
   add_foreign_key "os_versions", "os_products"
 end

@@ -1,0 +1,29 @@
+h1 Listing hardware_types
+
+table
+  thead
+    tr
+      th Code
+      th Name
+      th Description
+      th Category
+      th Order
+      th
+      th
+      th
+
+  tbody
+    - @hardware_types.each do |hardware_type|
+      tr
+        td = hardware_type.code
+        td = hardware_type.name
+        td = hardware_type.description
+        td = hardware_type.category
+        td = hardware_type.order
+        td = link_to 'Show', hardware_type
+        td = link_to 'Edit', edit_hardware_type_path(hardware_type)
+        td = link_to 'Destroy', hardware_type, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Hardware type', new_hardware_type_path

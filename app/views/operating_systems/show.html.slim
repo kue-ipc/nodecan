@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @operating_system.name
+p
+  strong Description:
+  = @operating_system.description
+p
+  strong End of life:
+  = @operating_system.end_of_life
+p
+  strong Order:
+  = @operating_system.order
+
+=> link_to 'Edit', edit_operating_system_path(@operating_system)
+'|
+=< link_to 'Back', operating_systems_path
