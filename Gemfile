@@ -31,11 +31,18 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'rails-i18n', '~> 6.0.0'
 gem 'enum_help'
 gem 'slim-rails'
+
+# Authentication
 gem 'devise'
 gem 'devise-i18n'
 gem 'net-ldap'
 gem 'devise_ldap_authenticatable'
+gem 'pundit'
+
+# Octicons
 gem 'octicons_helper'
+
+# IPAddress
 gem 'ipaddress'
 
 # CSS

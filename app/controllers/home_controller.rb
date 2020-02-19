@@ -1,6 +1,5 @@
 class HomeController < ApplicationController
-  before_action :authenticate_user!
-
   def index
+    authorize current_user, :user?
   end
 end

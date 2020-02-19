@@ -17,7 +17,7 @@ html
             | 端末管理システム
           div
             - if user_signed_in?
-              => current_user.display_name
+              => current_user.fullname
               = link_to destroy_user_session_path, method: :delete, class: 'btn btn-secondary my-2 my-sm-0' do
                 => octicon 'sign-out', height: 24
                 | ログアウト
