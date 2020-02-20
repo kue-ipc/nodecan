@@ -17,4 +17,4 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 
 require("modules/bootstrap-native")
-// require("modules/hyperapp")
+

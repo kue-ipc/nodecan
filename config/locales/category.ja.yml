@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    models:
+      category: カテゴリー
+    attributes:
+      category:
+        code: コード
+        name: 名前
+        description: 説明
+        model: 種別
+        order: 順番

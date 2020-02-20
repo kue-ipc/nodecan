@@ -28,8 +28,13 @@ br
 
 = link_to 'New Category', new_category_path
 
+- attrs = %i[code name description model order]
+- head = attrs.map { |attr| [attr, Category.human_attribute_name(attr)] }.to_h
 
-
-#index-list data-url=categories_path
+#index-list[
+  data-url=categories_path(format: :json)
+  data-attrs=attrs.to_json
+  data-head=head.to_json
+]
   | 取得中です。
 = javascript_pack_tag 'index-list'

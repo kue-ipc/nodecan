@@ -1,36 +1,36 @@
 import {h, app} from 'hyperapp'
 import {Http} from 'hyperapp-fx'
 
-indexListEl = document.getElementById('index-list')
-indexUrl = indexListEl.getAttribute('data-url')
+import {List} from 'components/List'
 
+node = document.getElementById('index-list')
 
+url = node.getAttribute('data-url')
+attrs = JSON.parse(node.getAttribute('data-attrs'))
+head = JSON.parse(node.getAttribute('data-head'))
 
-gotList = (state, response) =>
-  console.log response
-  return {
-    list: response
-  }
+gotList = (state, response) => {
+  state...
+  list: response
+}
 
 view = (state) =>
-  h 'ul', {},
-    state.list.map (entry) ->
-      h 'li', {}, entry.name
+  h 'div', {},
+    h List, {state...}
 
-
-
-app({
+app {
   init: [
     {
+      attrs
+      head
       list: []
     },
-    Http({
-      url: indexUrl + '.json'
+    Http {
+      url
       response: 'json'
       action: gotList
-    })
+    }
   ]
-  view: view
-  node: indexListEl
-})
-
+  view
+  node
+}
