@@ -1,7 +1,7 @@
-import {h, app} from 'hyperapp'
-import {Http} from 'hyperapp-fx'
+import { h, app } from 'hyperapp'
+import { Http } from 'hyperapp-fx'
 
-import {List} from 'components/List'
+import { List } from 'components/List'
 
 node = document.getElementById('index-list')
 

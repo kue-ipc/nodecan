@@ -1,25 +1,36 @@
-import {h} from 'hyperapp'
+import { h } from 'hyperapp'
 
 ListHead = ({attrs, head}) =>
-  h 'thead', {},
-    h 'tr', {},
-      attrs.map (attr) =>
-        h 'th', scope: 'col', head[attr]
+  ths = attrs.map (attr) =>
+    <th scope='col'>
+      {head[attr]}
+    </th>
 
-count = 0
+  <thead>
+    <tr>
+      {ths}
+    </tr>
+  </thead>
+
 ListBody = ({attrs, list}) =>
-  h 'tbody', {},
-    list.map (row) =>
-      h ListRow, {attrs, row}
+  rows = list.map (row) => <ListRow attrs={attrs} row={row} />
+  <tbody>
+    {rows}
+  </tbody>
 
 ListRow = ({attrs, row}) =>
-  h 'tr', {},
-    attrs.map (attr) =>
-      h 'th', {}, row[attr]
+  tds = attrs.map (attr) =>
+    <td>
+      {row[attr]}
+    </td>
+
+  <tr>
+    {tds}
+  </tr>
 
 export List = ({attrs, head, list}) =>
-  h 'table', class: 'table', [
-    h ListHead, {attrs, head}
-    h ListBody, {attrs, list}
-  ]
+  <table class="table">
+    <ListHead attrs={attrs} head={head} />
+    <ListBody attrs={attrs} list={list} />
+  </table>
 
