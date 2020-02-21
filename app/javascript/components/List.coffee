@@ -29,7 +29,7 @@ ListRow = ({attrs, row}) =>
   </tr>
 
 export List = ({attrs, head, list}) =>
-  <table class="table">
+  <table class="table" data-hoge="hogego" abcDef="abc">
     <ListHead attrs={attrs} head={head} />
     <ListBody attrs={attrs} list={list} />
   </table>
