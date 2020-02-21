@@ -15,8 +15,9 @@ gotList = (state, response) => {
 }
 
 view = (state) =>
-  h 'div', {},
-    h List, {state...}
+  <div>
+    <List {state...} />
+  </div>
 
 app {
   init: [
