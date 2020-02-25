@@ -30,11 +30,21 @@ br
 
 - attrs = %i[code name description model order]
 - head = attrs.map { |attr| [attr, Category.human_attribute_name(attr)] }.to_h
+- types = attrs
+- access_policy = policy(Category)
+- acl = { \
+    create: access_policy.create?,
+    read: access_policy.show?,  
+    update: access_policy.update?,   
+    delete: access_policy.destroy?,
+  }
 
 #index-list[
   data-url=categories_path(format: :json)
   data-attrs=attrs.to_json
   data-head=head.to_json
+  data-order='order'
+  data-acl=acl.to_json
 ]
   | 取得中です。
 = javascript_pack_tag 'index-list'

@@ -1,6 +1,7 @@
 import { h, app } from 'hyperapp'
 import { Http } from 'hyperapp-fx'
 
+import { ListMenu } from 'components/ListMenu'
 import { List } from 'components/List'
 
 node = document.getElementById('index-list')
@@ -16,6 +17,7 @@ gotList = (state, response) => {
 
 view = (state) =>
   <div>
+    <ListMenu {state...} />
     <List {state...} />
   </div>
 
@@ -24,6 +26,7 @@ app {
     {
       attrs
       head
+      selectedId: undefined
       list: []
     },
     Http {
