@@ -4,37 +4,40 @@ import { Http } from 'hyperapp-fx'
 import { ListMenu } from 'components/ListMenu'
 import { List } from 'components/List'
 
-node = document.getElementById('index-list')
+indexList = (node) =>
+  url = node.getAttribute('data-url')
+  attrs = JSON.parse(node.getAttribute('data-attrs'))
+  head = JSON.parse(node.getAttribute('data-head'))
+  acl = JSON.parse(node.getAttribute('data-acl'))
 
-url = node.getAttribute('data-url')
-attrs = JSON.parse(node.getAttribute('data-attrs'))
-head = JSON.parse(node.getAttribute('data-head'))
+  gotList = (state, response) => {
+    state...
+    list: response
+  }
 
-gotList = (state, response) => {
-  state...
-  list: response
-}
+  view = (state) =>
+    <div>
+      <ListMenu {state...} />
+      <List {state...} />
+    </div>
 
-view = (state) =>
-  <div>
-    <ListMenu {state...} />
-    <List {state...} />
-  </div>
+  app {
+    init: [
+      {
+        attrs
+        head
+        acl
+        selectedId: undefined
+        list: []
+      },
+      Http {
+        url
+        response: 'json'
+        action: gotList
+      }
+    ]
+    view
+    node
+  }
 
-app {
-  init: [
-    {
-      attrs
-      head
-      selectedId: undefined
-      list: []
-    },
-    Http {
-      url
-      response: 'json'
-      action: gotList
-    }
-  ]
-  view
-  node
-}
+indexList(document.getElementById('index-list'))

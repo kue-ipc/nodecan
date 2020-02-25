@@ -28,7 +28,7 @@ br
 
 = link_to 'New Category', new_category_path
 
-- attrs = %i[code name description model order]
+- attrs = %i[order model code name description]
 - head = attrs.map { |attr| [attr, Category.human_attribute_name(attr)] }.to_h
 - types = attrs
 - access_policy = policy(Category)
@@ -46,5 +46,5 @@ br
   data-order='order'
   data-acl=acl.to_json
 ]
-  | 取得中です。
+  | (リストを取得中です。表示されるまでしばらくお待ち下さい。)
 = javascript_pack_tag 'index-list'

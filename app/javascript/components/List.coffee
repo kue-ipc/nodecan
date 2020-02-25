@@ -41,7 +41,7 @@ ListRow = ({attrs, row, selected, ctx = null}) =>
   </tr>
 
 export List = ({attrs, head, list, selectedId, select}) =>
-  <table class="table">
+  <table class="table table-responsive">
     <ListHead attrs={attrs} head={head} />
     <ListBody attrs={attrs} list={list} selectedId={selectedId} />
   </table>
