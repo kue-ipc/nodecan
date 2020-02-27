@@ -2,9 +2,9 @@ import { h } from 'hyperapp'
 
 # Actions
 
-SelectRow = (state, id) => {
+SelectRow = (state, item) => {
   state...
-  selectedId: id
+  selectedItem: item
 }
 
 # Views
@@ -21,8 +21,9 @@ ListHead = ({attrs, head}) =>
     </tr>
   </thead>
 
-ListBody = ({attrs, list, selectedId}) =>
-  rows = list.map (row) => <ListRow attrs={attrs} row={row} selected={row.id == selectedId}/>
+ListBody = ({attrs, list, selectedItem}) =>
+  console.log selectedItem
+  rows = list.map (row) => <ListRow attrs={attrs} row={row} selected={row.id == selectedItem?.id}/>
   <tbody>
     {rows}
   </tbody>
@@ -36,13 +37,13 @@ ListRow = ({attrs, row, selected, ctx = null}) =>
   classes.push 'table-active' if selected
   classes.push "table-#{ctx}" if ctx
 
-  <tr class={classes} draggable={true} onClick={[SelectRow, row.id]}>
+  <tr class={classes} draggable={true} onClick={[SelectRow, row]}>
     {tds}
   </tr>
 
-export List = ({attrs, head, list, selectedId, select}) =>
+export List = ({attrs, head, list, selectedItem}) =>
   <table class="table table-responsive">
     <ListHead attrs={attrs} head={head} />
-    <ListBody attrs={attrs} list={list} selectedId={selectedId} />
+    <ListBody attrs={attrs} list={list} selectedItem={selectedItem} />
   </table>
 

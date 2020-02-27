@@ -1,22 +1,22 @@
 import { h } from 'hyperapp'
 
-export Modal = ({title}, children)
-  <div class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
+export Modal = ({id, title, fade, size, backdrop: 'static'}, children) =>
+  labelId = "#{id}-title"
+  <div id={id} class="modal fade" tabindex="-1" role="dialog" aria-labelledby={labelId} aria-hidden="true" data-backdrop="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="eee">タイトル</h5>
+          <h5 id={labelId} class="modal-title">{title}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <sparn aria-hidden="true">&times;</span>
+            <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
           {children}
         </div>
-        <div> class="modal-footer">
-          <button type="button" class="btn btn-secondary" data=dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">閉じる</button>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
         </div>
       </div>
-    </dvi>
+    </div>
   </div>

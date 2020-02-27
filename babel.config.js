@@ -80,7 +80,7 @@ module.exports = function(api) {
         "@babel/plugin-transform-react-jsx",
         {
           pragma: 'h', // for Hyperapp
-          pragmaFrag: "" // for Hyperapp
+          pragmaFrag: '""' // for Hyperapp
         }
       ]
     ].filter(Boolean)

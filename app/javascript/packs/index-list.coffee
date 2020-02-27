@@ -3,11 +3,12 @@ import { Http } from 'hyperapp-fx'
 
 import { ListMenu } from 'components/ListMenu'
 import { List } from 'components/List'
+import { Modal } from 'components/Modal'
 
 indexList = (node) =>
   url = node.getAttribute('data-url')
   attrs = JSON.parse(node.getAttribute('data-attrs'))
-  head = JSON.parse(node.getAttribute('data-head'))
+  humanNames = JSON.parse(node.getAttribute('data-human-names'))
   acl = JSON.parse(node.getAttribute('data-acl'))
 
   gotList = (state, response) => {
@@ -27,7 +28,7 @@ indexList = (node) =>
         attrs
         head
         acl
-        selectedId: undefined
+        selectedItem: null
         list: []
       },
       Http {
