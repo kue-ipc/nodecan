@@ -1,6 +1,6 @@
 json.status :sucess
 json.set! :model do
-  json.name Category.model_name.name
+  json.name Category.model_name.param_key
   json.human Category.model_name.human
   json.total Category.count
   json.set! :attrs do
@@ -15,7 +15,7 @@ end
 json.set! :items do
   json.array! @categories, partial: "categories/category", as: :category
 end
-json.set! :display do
+json.set! :targets do
   json.index %i[code name model]
   json.update %i[name model description]
   json.read %i[code name model description]

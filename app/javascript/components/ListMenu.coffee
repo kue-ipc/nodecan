@@ -1,6 +1,7 @@
 import { h } from 'hyperapp'
 
 import { Modal } from './Modal'
+import { FormInput } from './FormInput'
 
 New = (state) => {
   state...
@@ -17,16 +18,14 @@ NewButtonClick = (state) =>
     selected_item: null
   }
 
-NewButton = (humans) =>
+NewButton = ({targets, model}) =>
   [
     <button type="button" class="btn btn-primary mr-2" onClick={NewButtonClick}>
       新規作成
     </button>
-    <Modal id="modal-new-form" title="新規作成">
+    <Modal id="modal-new-form" title={"#{model?.human}新規作成"}>
       <form>
-        <div class="form-group row">
-          <label for="" class="col-sm-2 col-form-label">test</label>
-        </div>
+        {targets.map (name) => <FormInput prefix="modal-new-form-" name={name} model={model} />}
       </form>
     </Modal>
   ]
@@ -43,10 +42,10 @@ UpAndDownButton = ({selected_item}) =>
     <button type="button" class="btn btn-secondary mr-2" disabled={!selected_item?}>下</button>
   ]
 
-export ListMenu = ({acl, selected_item}) =>
+export ListMenu = ({acl, targets, model, selected_item}) =>
   buttons = []
   if acl.create
-    buttons.push <NewButton />
+    buttons.push <NewButton targets={targets?.create} model={model} />
   if acl.read
     buttons.push <OpenButton selected_item={selected_item} />
   if acl.update

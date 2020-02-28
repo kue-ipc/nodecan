@@ -17,7 +17,7 @@ indexList = (node) =>
     <div>
       <ListMenu {state...} />
       <List
-        targets={state.display?.index}
+        targets={state.targets?.index}
         attrs={state.model?.attrs}
         items={state.items}
         selected_item={state.selected_item}

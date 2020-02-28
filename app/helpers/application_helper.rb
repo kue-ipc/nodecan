@@ -17,10 +17,10 @@ module ApplicationHelper
       :datetime
     when ActiveRecord::Type::Time
       :time
-    when ActiveRecord::Type::String
-      :string
     when ActiveRecord::Type::Text
       :text
+    when ActiveRecord::Type::String
+      :string
     when ActiveRecord::Type::Binary
       :binary
     when ActiveRecord::Enum::EnumType
