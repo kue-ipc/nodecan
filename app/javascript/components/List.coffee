@@ -4,15 +4,15 @@ import { h } from 'hyperapp'
 
 SelectRow = (state, item) => {
   state...
-  selectedItem: item
+  selected_item: item
 }
 
 # Views
 
-ListHead = ({attrs, head}) =>
-  ths = attrs.map (attr) =>
+ListHead = ({targets, attrs}) =>
+  ths = targets?.map (name) =>
     <th scope='col'>
-      {head[attr]}
+      {attrs?[name]?.human}
     </th>
 
   <thead>
@@ -21,29 +21,29 @@ ListHead = ({attrs, head}) =>
     </tr>
   </thead>
 
-ListBody = ({attrs, list, selectedItem}) =>
-  console.log selectedItem
-  rows = list.map (row) => <ListRow attrs={attrs} row={row} selected={row.id == selectedItem?.id}/>
+ListBody = ({targets, attrs, items, selected_item}) =>
+  rows = items?.map (item) =>
+    <ListRow targets={targets} attrs={attrs} item={item} selected={item.id == selected_item?.id}/>
   <tbody>
     {rows}
   </tbody>
 
-ListRow = ({attrs, row, selected, ctx = null}) =>
-  tds = attrs.map (attr) =>
+ListRow = ({targets, attrs, item, selected, ctx = null}) =>
+  tds = targets.map (name) =>
     <td>
-      {row[attr]}
+      {item[name]}
     </td>
   classes = []
   classes.push 'table-active' if selected
   classes.push "table-#{ctx}" if ctx
 
-  <tr class={classes} draggable={true} onClick={[SelectRow, row]}>
+  <tr class={classes} draggable={true} onClick={[SelectRow, item]}>
     {tds}
   </tr>
 
-export List = ({attrs, head, list, selectedItem}) =>
+export List = ({targets, attrs, items, selected_item}) =>
   <table class="table table-responsive">
-    <ListHead attrs={attrs} head={head} />
-    <ListBody attrs={attrs} list={list} selectedItem={selectedItem} />
+    <ListHead targets={targets} attrs={attrs} />
+    <ListBody targets={targets} attrs={attrs} items={items} selected_item={selected_item} />
   </table>
 

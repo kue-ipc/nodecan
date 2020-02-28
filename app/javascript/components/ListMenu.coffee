@@ -14,7 +14,7 @@ NewButtonClick = (state) =>
   modal.show()
   {
     state...
-    selectedItem: null
+    selected_item: null
   }
 
 NewButton = (humans) =>
@@ -25,35 +25,34 @@ NewButton = (humans) =>
     <Modal id="modal-new-form" title="新規作成">
       <form>
         <div class="form-group row">
-        <label for="" class="col-sm-2 col-form-label">
+          <label for="" class="col-sm-2 col-form-label">test</label>
+        </div>
       </form>
     </Modal>
   ]
 
-OpenButton = ({selectedItem}) =>
-  <button type="button" class="btn btn-info mr-2" disabled={!selectedItem?}>開く/編集</button>
+OpenButton = ({selected_item}) =>
+  <button type="button" class="btn btn-info mr-2" disabled={!selected_item?}>開く/編集</button>
 
-DeleteButton = ({selectedItem}) =>
-  <button type="button" class="btn btn-danger mr-2" disabled={!selectedItem?}>削除</button>
+DeleteButton = ({selected_item}) =>
+  <button type="button" class="btn btn-danger mr-2" disabled={!selected_item?}>削除</button>
 
-UpAndDownButton = ({selectedItem}) =>
+UpAndDownButton = ({selected_item}) =>
   [
-    <button type="button" class="btn btn-secondary mr-2" disabled={!selectedItem?}>上</button>
-    <button type="button" class="btn btn-secondary mr-2" disabled={!selectedItem?}>下</button>
+    <button type="button" class="btn btn-secondary mr-2" disabled={!selected_item?}>上</button>
+    <button type="button" class="btn btn-secondary mr-2" disabled={!selected_item?}>下</button>
   ]
 
-
-
-export ListMenu = ({acl, selectedItem}) =>
+export ListMenu = ({acl, selected_item}) =>
   buttons = []
   if acl.create
     buttons.push <NewButton />
   if acl.read
-    buttons.push <OpenButton selectedItem={selectedItem} />
+    buttons.push <OpenButton selected_item={selected_item} />
   if acl.update
-    buttons.push <UpAndDownButton selectedItem={selectedItem} />
+    buttons.push <UpAndDownButton selected_item={selected_item} />
   if acl.delete
-    buttons.push <DeleteButton selectedItem={selectedItem} />
+    buttons.push <DeleteButton selected_item={selected_item} />
 
   <div class="mb-2">
     {buttons}

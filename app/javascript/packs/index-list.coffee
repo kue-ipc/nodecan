@@ -7,29 +7,28 @@ import { Modal } from 'components/Modal'
 
 indexList = (node) =>
   url = node.getAttribute('data-url')
-  attrs = JSON.parse(node.getAttribute('data-attrs'))
-  humanNames = JSON.parse(node.getAttribute('data-human-names'))
-  acl = JSON.parse(node.getAttribute('data-acl'))
 
   gotList = (state, response) => {
     state...
-    list: response
+    response...
   }
 
   view = (state) =>
     <div>
       <ListMenu {state...} />
-      <List {state...} />
+      <List
+        targets={state.display?.index}
+        attrs={state.model?.attrs}
+        items={state.items}
+        selected_item={state.selected_item}
+      />
     </div>
 
   app {
     init: [
       {
-        attrs
-        head
-        acl
-        selectedItem: null
-        list: []
+        url
+        selected_item: null
       },
       Http {
         url

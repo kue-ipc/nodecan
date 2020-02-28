@@ -28,23 +28,6 @@ br
 
 = link_to 'New Category', new_category_path
 
-- attrs = %i[order model code name description]
-- head = attrs.map { |attr| [attr, Category.human_attribute_name(attr)] }.to_h
-- types = attrs
-- access_policy = policy(Category)
-- acl = { \
-    create: access_policy.create?,
-    read: access_policy.show?,  
-    update: access_policy.update?,   
-    delete: access_policy.destroy?,
-  }
-
-#index-list[
-  data-url=categories_path(format: :json)
-  data-attrs=attrs.to_json
-  data-head=head.to_json
-  data-order='order'
-  data-acl=acl.to_json
-]
+#index-list data-url=categories_path(format: :json)
   | (リストを取得中です。表示されるまでしばらくお待ち下さい。)
 = javascript_pack_tag 'index-list'
