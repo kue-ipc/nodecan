@@ -3,12 +3,6 @@ import { h } from 'hyperapp'
 import { Modal } from './Modal'
 import { FormInput } from './FormInput'
 
-New = (state) => {
-  state...
-  modal: true
-  object: null
-}
-
 
 NewButtonClick = (state) =>
   modal = new bsn.Modal(document.getElementById('modal-new-form'))
@@ -19,20 +13,37 @@ NewButtonClick = (state) =>
   }
 
 NewButton = ({targets, model}) =>
+  buttons = [
+  ]
+
   [
-    <button type="button" class="btn btn-primary mr-2" onClick={NewButtonClick}>
-      新規作成
-    </button>
+    <button type="button" class="btn btn-primary mr-2" onClick={NewButtonClick}>新規作成</button>
     <Modal id="modal-new-form" title={"#{model?.human}新規作成"}>
-      <form>
+      <form action="categories" accept-charset="UTF-8" method="post">
         {targets.map (name) => <FormInput prefix="modal-new-form-" name={name} model={model} />}
       </form>
     </Modal>
   ]
 
-OpenButton = ({selected_item}) =>
-  <button type="button" class="btn btn-info mr-2" disabled={!selected_item?}>開く/編集</button>
+OpenButtonClick = (state) =>
+  modal = new bsn.Modal(document.getElementById('modal-open-form'))
+  modal.show()
+  state
 
+OpenButton = ({targets, writes, model, selected_item}) =>
+  [
+    <button type="button" class="btn btn-info mr-2" disabled={!selected_item?} onClick={OpenButtonClick}>
+      開く/編集
+    </button>
+    <Modal id="modal-open-form" title={"#{model?.human}開く/編集"}>
+      <form>
+        {targets.map (name) =>
+          <FormInput prefix="modal-open-form-" name={name} model={model} value={selected_item?[name]} readonly={!writes.includes(name)}/>
+        }
+      </form>
+    </Modal>
+  ]
+ 
 DeleteButton = ({selected_item}) =>
   <button type="button" class="btn btn-danger mr-2" disabled={!selected_item?}>削除</button>
 
@@ -44,13 +55,13 @@ UpAndDownButton = ({selected_item}) =>
 
 export ListMenu = ({acl, targets, model, selected_item}) =>
   buttons = []
-  if acl.create
+  if acl?.create
     buttons.push <NewButton targets={targets?.create} model={model} />
-  if acl.read
-    buttons.push <OpenButton selected_item={selected_item} />
-  if acl.update
+  if acl?.read
+    buttons.push <OpenButton targets={targets?.read} writes={if acl?.update then targets?.update else []} model={model} selected_item={selected_item}/>
+  if acl?.update
     buttons.push <UpAndDownButton selected_item={selected_item} />
-  if acl.delete
+  if acl?.delete
     buttons.push <DeleteButton selected_item={selected_item} />
 
   <div class="mb-2">

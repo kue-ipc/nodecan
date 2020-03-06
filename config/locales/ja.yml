@@ -7,3 +7,6 @@ ja:
     new: "%{name}を新規作成"
     confirm: "本当によろしいですか？"
     confirm_destroy: "本当に削除してもよろしいですか？"
+  enum:
+    hardware_type: 機器のタイプ
+    operating_system: オペレーティング・システム

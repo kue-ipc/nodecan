@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def type_json(type)
+  def type_name(type)
     case type
     when ActiveRecord::Type::Boolean
       :boolean
