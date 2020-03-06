@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "@babel/preset-react": "^7.8.3",
+    "@hyperapp/http": "^0.0.2",
     "@rails/actioncable": "^6.0.2-1",
     "@rails/activestorage": "^6.0.2-1",
     "@rails/ujs": "^6.0.2-1",
@@ -11,7 +12,6 @@
     "coffee-loader": "0.9.0",
     "coffeescript": "2.5.1",
     "hyperapp": "^2.0.4",
-    "hyperapp-fx": "^2.0.0-beta.1",
     "turbolinks": "^5.2.0"
   },
   "devDependencies": {

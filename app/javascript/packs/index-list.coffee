@@ -1,5 +1,5 @@
 import { h, app } from 'hyperapp'
-import { Http } from 'hyperapp-fx'
+import { request } from '@hyperapp/http'
 
 import { ListMenu } from 'components/ListMenu'
 import { List } from 'components/List'
@@ -30,9 +30,9 @@ indexList = (node) =>
         url
         selected_item: null
       },
-      Http {
+      request {
         url
-        response: 'json'
+        expect: 'json'
         action: gotList
       }
     ]
