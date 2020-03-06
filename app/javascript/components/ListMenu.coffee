@@ -1,4 +1,5 @@
 import { h } from 'hyperapp'
+import { request } from '@hyperapp/http'
 
 import { Modal } from './Modal'
 import { FormInput } from './FormInput'
@@ -12,8 +13,19 @@ NewButtonClick = (state) =>
     selected_item: null
   }
 
+# CreateButtonClick = state => [
+#   state
+#   request {
+#     url:
+#     expect: 'json'
+#     action: ...
+#     options: ...
+#   }
+# ]
+
 NewButton = ({targets, model}) =>
   buttons = [
+    
   ]
 
   [
