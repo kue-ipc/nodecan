@@ -1,6 +1,6 @@
 import { h } from 'hyperapp'
 
-export Modal = ({id, title, fade, size, backdrop = 'static'}, children) =>
+export Modal = ({id, title, fade, size, buttons = [], backdrop = 'static'}, children) =>
   labelId = "#{id}-title"
   <div id={id} class="modal fade" tabindex="-1" role="dialog" aria-labelledby={labelId} aria-hidden="true" data-backdrop="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -15,7 +15,10 @@ export Modal = ({id, title, fade, size, backdrop = 'static'}, children) =>
           {children}
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+          {[
+            buttons
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+          ]}
         </div>
       </div>
     </div>

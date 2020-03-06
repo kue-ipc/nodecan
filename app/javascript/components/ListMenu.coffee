@@ -4,6 +4,10 @@ import { request } from '@hyperapp/http'
 import { Modal } from './Modal'
 import { FormInput } from './FormInput'
 
+CsrfInputHidden = () =>
+  csrfParam = document.getElementsByName('csrf-param')[0].content
+  csrfToken = document.getElementsByName('csrf-token')[0].content
+  <input type="hidden" name={csrfParam} value={csrfToken} />
 
 NewButtonClick = (state) =>
   modal = new bsn.Modal(document.getElementById('modal-new-form'))
@@ -13,26 +17,42 @@ NewButtonClick = (state) =>
     selected_item: null
   }
 
-# CreateButtonClick = state => [
-#   state
-#   request {
-#     url:
-#     expect: 'json'
-#     action: ...
-#     options: ...
-#   }
-# ]
+postItem = (state, response) =>
+  console.log({response...})
+  state
+
+CreateButtonClick = (state, {formId}) =>
+  form = document.getElementById(formId)
+  data = new FormData(form)
+  [
+    state
+    request {
+      url: form.action
+      expect: 'json'
+      action: postItem
+      options:
+        method: form.method
+        body: data
+        mode: 'same-origin'
+        credentials: 'same-origin'
+    }
+  ]
 
 NewButton = ({targets, model}) =>
+  formId = 'new-form'
+
   buttons = [
-    
+    <button class="btn btn-primary mr-2" type="button" onClick={[CreateButtonClick, {formId}]}>
+      新規作成
+    </button>
   ]
 
   [
     <button type="button" class="btn btn-primary mr-2" onClick={NewButtonClick}>新規作成</button>
-    <Modal id="modal-new-form" title={"#{model?.human}新規作成"}>
-      <form action="categories" accept-charset="UTF-8" method="post">
-        {targets.map (name) => <FormInput prefix="modal-new-form-" name={name} model={model} />}
+    <Modal id={"modal-#{formId}"} title={"#{model?.human}新規作成"} buttons={buttons}>
+      <form id={formId} action="categories" accept-charset="UTF-8" method="post">
+        <CsrfInputHidden />
+        {targets.map (name) => <FormInput prefix={"#{formId}-"} name={name} model={model} />}
       </form>
     </Modal>
   ]
