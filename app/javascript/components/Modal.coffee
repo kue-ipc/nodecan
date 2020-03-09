@@ -1,8 +1,11 @@
 import { h } from 'hyperapp'
 
-export Modal = ({id, title, fade, size, buttons = [], backdrop = 'static'}, children) =>
+export Modal = ({id, fade = true, title, size, buttons = [], backdrop = 'static'}, children) =>
   labelId = "#{id}-title"
-  <div id={id} class="modal fade" tabindex="-1" role="dialog" aria-labelledby={labelId} aria-hidden="true" data-backdrop="true">
+  classList = ['modal']
+  classList.push('fade') if fade
+
+  <div id={id} class={classList} tabindex="-1" role="dialog" aria-labelledby={labelId} aria-hidden="true" data-backdrop={backdrop}>
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
