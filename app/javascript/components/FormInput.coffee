@@ -1,7 +1,7 @@
 import { h } from 'hyperapp'
 
-Input = ({id, name, type, value, readonly}) =>
-  <input id={id} class="form-control" type={type} name={name} value={value} readonly={readonly}/>
+Input = ({id, name, type, value, readonly, validation...}) =>
+  <input id={id} class="form-control" type={type} name={name} value={value} readonly={readonly} {validation...} />
 
 export FormInput = ({prefix, name, value, model, readonly}) =>
   inputName = "#{model?.name}[#{name}]"
@@ -9,12 +9,13 @@ export FormInput = ({prefix, name, value, model, readonly}) =>
   attrLabel = model?.attrs?[name]?.human
   attrType = model?.attrs?[name]?.type
   attrMapping = model?.attrs?[name]?.mapping
-  options = []
+  selectOptions = []
+  validation = model?.attrs?[name]?.validation
 
   if attrMapping
-    options.push [<option selected={!vale?}>選択してください。</option>]
+    selectOptions.push [<option selected={!value?} label="選択してください。"></option>]
     Object.entries(attrMapping).map ([key, info]) =>
-      options.push <option value={info.value} selected={value == key}>{info.human}</option>
+      selectOptions.push <option value={key} selected={value == key}>{info.human}</option>
 
   <div class="form-group row">
     <label class="col-sm-2 col-form-label" for={inputId}>
@@ -24,14 +25,14 @@ export FormInput = ({prefix, name, value, model, readonly}) =>
       {
         switch attrType
           when 'string'
-            <Input type="text" name={inputName} id={inputId} value={value} readonly={readonly} />
+            <Input type="text" name={inputName} id={inputId} value={value} readonly={readonly} {validation...} />
           when 'integer'
-            <Input type="number" name={inputName} id={inputId} value={value} readonly={readonly} />
+            <Input type="number" name={inputName} id={inputId} value={value} readonly={readonly} {validation...} />
           when 'text'
             <textarea id={inputId} class="form-control" name={inputName} readonly={readonly}>{value}</textarea>
           when 'enum'
-            <select id={inputId} class="custom-select" name={inputName} readonly={readonly}>
-              {options}
+            <select id={inputId} class="custom-select" name={inputName} readonly={readonly} {validation...}>
+              {selectOptions}
             </select>
           else
             <span>不明なタイプ</span>

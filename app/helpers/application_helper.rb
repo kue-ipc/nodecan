@@ -30,4 +30,31 @@ module ApplicationHelper
     end
   end
 
+  def validators_json(validators)
+    data = {}
+    validators.each do |validator|
+      case validator
+      when ActiveRecord::Validations::PresenceValidator
+        data[:required] = true
+      when ActiveRecord::Validations::LengthValidator
+        if validator.options.has_key?(:maximum)
+          data[:maxlength] = validator.options[:maximum]
+        end
+        if validator.options.has_key?(:minimum)
+          data[:minlength] = validator.options[:minimum]
+        end
+      when ActiveModel::Validations::FormatValidator
+        if validator.options.has_key?(:with)
+          data[:pattern] = regexp_to_html5_pattern(validator.options[:with])
+        end 
+      else
+        nil
+      end
+    end
+    data
+  end
+
+  def regexp_to_html5_pattern(regexp)
+    regexp.source.gsub(/\A\\A/, '').gsub(/\\z\z/, '')
+  end
 end

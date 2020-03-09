@@ -17,9 +17,33 @@ NewButtonClick = (state) =>
     selected_item: null
   }
 
+errorMessage = (state, error) =>
+  {
+    state...
+    error
+  }
+
+
+responseError = (dispatch, response) =>
+  message = await response.json()
+  dispatch(errorMessage, message)
+
 postItem = (state, response) =>
-  console.log({response...})
   state
+  if response instanceof Response
+    [
+      state
+      [responseError, response]
+    ]
+  else
+    console.log('ok')
+    modal = new bsn.Modal(document.getElementById('modal-new-form'))
+    modal.hide()
+    {
+      state...
+      items: state.items.concat(response)
+    }
+
 
 CreateButtonClick = (state, {formId}) =>
   form = document.getElementById(formId)
@@ -38,7 +62,7 @@ CreateButtonClick = (state, {formId}) =>
     }
   ]
 
-NewButton = ({targets, model}) =>
+NewButton = ({url, targets, model}) =>
   formId = 'new-form'
 
   buttons = [
@@ -50,7 +74,7 @@ NewButton = ({targets, model}) =>
   [
     <button type="button" class="btn btn-primary mr-2" onClick={NewButtonClick}>新規作成</button>
     <Modal id={"modal-#{formId}"} title={"#{model?.human}新規作成"} buttons={buttons}>
-      <form id={formId} action="categories" accept-charset="UTF-8" method="post">
+      <form id={formId} action={url} accept-charset="UTF-8" method="post">
         <CsrfInputHidden />
         {targets.map (name) => <FormInput prefix={"#{formId}-"} name={name} model={model} />}
       </form>
@@ -85,10 +109,12 @@ UpAndDownButton = ({selected_item}) =>
     <button type="button" class="btn btn-secondary mr-2" disabled={!selected_item?}>下</button>
   ]
 
-export ListMenu = ({acl, targets, model, selected_item}) =>
+export ListMenu = ({url, acl, targets, model, selected_item, error}) =>
+  console.log '---erorr obj---'
+  console.log error
   buttons = []
   if acl?.create
-    buttons.push <NewButton targets={targets?.create} model={model} />
+    buttons.push <NewButton url={url} targets={targets?.create} model={model} />
   if acl?.read
     buttons.push <OpenButton targets={targets?.read} writes={if acl?.update then targets?.update else []} model={model} selected_item={selected_item}/>
   if acl?.update

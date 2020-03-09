@@ -15,5 +15,6 @@ Category.attribute_names.each do |name|
         end
       end
     end
+    json.validation validators_json(Category.validators_on(name))
   end
 end

@@ -1,32 +1,32 @@
 h1 Listing categories
 
-table
-  thead
-    tr
-      th Code
-      th Name
-      th Description
-      th Model
-      th Order
-      th
-      th
-      th
+/ table
+/   thead
+/     tr
+/       th Code
+/       th Name
+/       th Description
+/       th Model
+/       th Order
+/       th
+/       th
+/       th
 
-  tbody
-    - @categories.each do |category|
-      tr
-        td = category.code
-        td = category.name
-        td = category.description
-        td = category.model
-        td = category.order
-        td = link_to 'Show', category
-        td = link_to 'Edit', edit_category_path(category)
-        td = link_to 'Destroy', category, data: { confirm: 'Are you sure?' }, method: :delete
+/   tbody
+/     - @categories.each do |category|
+/       tr
+/         td = category.code
+/         td = category.name
+/         td = category.description
+/         td = category.model
+/         td = category.order
+/         td = link_to 'Show', category
+/         td = link_to 'Edit', edit_category_path(category)
+/         td = link_to 'Destroy', category, data: { confirm: 'Are you sure?' }, method: :delete
 
-br
+/ br
 
-= link_to 'New Category', new_category_path
+/ = link_to 'New Category', new_category_path
 
 #index-list data-url=categories_path(format: :json)
   | (リストを取得中です。表示されるまでしばらくお待ち下さい。)
