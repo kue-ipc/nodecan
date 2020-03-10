@@ -30,11 +30,9 @@ export Modal = ({modal, id, fade = false, title, size, buttons = [], backdrop = 
     params['style'] = {display: 'block'}
     params['aria-model'] = true
     background = <ModalBackdrop fade={fade} backdrop={backdrop} />
-
   else
     params['style'] = {display: 'none'}
     params['aria-hidden'] = true
-
 
   [
     <div id={id} class={classList} aria-labelledby={labelId} data-backdrop={backdrop} {params...}>
@@ -51,7 +49,7 @@ export Modal = ({modal, id, fade = false, title, size, buttons = [], backdrop = 
           </div>
           <div class="modal-footer">
             {[
-              buttons
+              buttons...
               <button type="button" class="btn btn-secondary"  onClick={CloseModal}>閉じる</button>
             ]}
           </div>

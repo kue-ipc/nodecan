@@ -27,7 +27,7 @@ responseError = (dispatch, response) =>
   message = await response.json()
   dispatch(errorMessage, message)
 
-postItem = (state, response) =>
+createItem = (state, response) =>
   state
   if response instanceof Response
     [
@@ -51,7 +51,7 @@ CreateButtonClick = (state, {formId}) =>
     request {
       url: form.action
       expect: 'json'
-      action: postItem
+      action: createItem
       options:
         method: form.method
         body: data
@@ -111,6 +111,7 @@ UpAndDownButton = ({selected_item}) =>
   ]
 
 export ListMenu = ({modal, url, acl, targets, model, selected_item, error}) =>
+  console.log(error)
   buttons = []
   if acl?.create
     buttons.push <NewButton modal={modal} url={url} targets={targets?.create} model={model} />
