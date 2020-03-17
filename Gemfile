@@ -52,6 +52,10 @@ gem 'bootstrap', '~> 4.4.1'
 ## FontAwesome
 gem 'font-awesome-rails'
 
+# Admin
+gem 'rails_admin', '~> 2.0'
+gem 'rails_admin-i18n'
+
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
