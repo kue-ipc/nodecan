@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    models:
+      operating_system: オペレーティングシステム(OS)
+    attributes:
+      operating_system:
+        code: コード
+        name: 名前
+        description: 説明
+        category: カテゴリー
+        order: 順番
+        end_of_life: サポート終了日

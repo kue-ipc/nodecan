@@ -1,4 +1,7 @@
 class Category < ApplicationRecord
+  has_many :operating_system
+  has_many :hardware_type
+
   enum model: {
     hardware_type: 0,
     operating_system: 1,
@@ -8,9 +11,9 @@ class Category < ApplicationRecord
                    length: {maximum: 256},
                    format: {
                       with: /\A[a-z][0-9a-z]*\z/,
-                      message: '英小文字と数字のみが使えます。ただし、数字は先頭に使えません。'
+                      message: '英小文字から始まり、英小文字と数字のみでなければなりません。'
                    }
-  validates :name, presence:true, uniqueness: {scope: :model}
+  validates :name, presence: true, uniqueness: {scope: :model}
   validates :model, presence: true
   validates :description, length: {maximum: 2048}
 

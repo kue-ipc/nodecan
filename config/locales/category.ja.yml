@@ -9,3 +9,6 @@ ja:
         description: 説明
         model: 種別
         order: 順番
+      category/model:
+        hardware_type: 機種
+        operating_system: OS

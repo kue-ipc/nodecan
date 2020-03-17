@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    models:
+      hardware_type: 機器のタイプ
+    attributes:
+      hardware_type:
+        code: コード
+        name: 名前
+        description: 説明
+        category: カテゴリー
+        order: 順番

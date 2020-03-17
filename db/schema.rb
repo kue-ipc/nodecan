@@ -16,19 +16,20 @@ ActiveRecord::Schema.define(version: 2020_02_19_015458) do
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
-    t.string "code"
-    t.string "name"
+    t.string "code", null: false
+    t.string "name", null: false
     t.text "description"
     t.integer "model", default: 0, null: false
-    t.integer "order"
+    t.integer "order", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["code", "model"], name: "index_categories_on_code_and_model", unique: true
+    t.index ["code"], name: "index_categories_on_code"
     t.index ["name", "model"], name: "index_categories_on_name_and_model", unique: true
   end
 
   create_table "hardware_types", force: :cascade do |t|
-    t.string "code"
+    t.string "code", null: false
     t.string "name", null: false
     t.text "description"
     t.bigint "category_id"
@@ -146,7 +147,7 @@ ActiveRecord::Schema.define(version: 2020_02_19_015458) do
   end
 
   create_table "operating_systems", force: :cascade do |t|
-    t.string "code"
+    t.string "code", null: false
     t.string "name", null: false
     t.text "description"
     t.bigint "category_id"
