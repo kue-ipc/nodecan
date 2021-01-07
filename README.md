@@ -1,6 +1,9 @@
 # nodecan
 端末管理システム
 
+[nodokan](https://github.com/kue-ipc/nodokan) として作り直したため、このレポジトリは後ほど削除されます。
+
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
